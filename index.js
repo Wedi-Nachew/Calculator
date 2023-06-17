@@ -1,11 +1,13 @@
+const display = document.querySelector(".display")
 const numbres = document.querySelectorAll("#num")
 numbres.forEach(item => item.addEventListener("click", (e)=>{
-    console.log(e.target.dataset.value)
+    display.textContent = e.target.dataset.value;
 }))
+
 let a;
 let b;
 let operator;
-
+/*
 function add(a,b){
     return a+b
 }
@@ -34,4 +36,4 @@ function renderNumbers(){
 
 }
 
-const display = renderNumbers()
+const display = renderNumbers()*/
