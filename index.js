@@ -1,7 +1,6 @@
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
-let count = 0;
 
 function add(firstNumber,secondNumber){
     return (~~firstNumber + ~~secondNumber)
@@ -33,15 +32,20 @@ const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
 
 
- getNumber.forEach(item => item.addEventListener("click", (e)=> {
-    let number = e.target.dataset.value;
-    showNumbers.textContent = number;
-    if(!operator) {
-        firstNumber = number
-    } else {
-        secondNumber = number
+ getNumber.forEach(item => item.addEventListener("click", (e)=> { 
+    if(!operator && !firstNumber) {
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = firstNumber;
+    } else if (!operator && firstNumber){
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = firstNumber;
+    } else if (operator && !secondNumber) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = secondNumber;
+    } else if (operator && secondNumber) {
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = secondNumber;
     }
-    
 })) ;
 operators.forEach(item => item.addEventListener("click", (e)=> {
     operator = e.target.dataset.value;
