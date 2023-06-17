@@ -4,26 +4,26 @@ let operator = null;
 let count = 0;
 
 function add(a,b){
-    return a+b
+    return (firstNumber + secondNumber)
 }
 function subtract(a,b){
-    return a-b
+    return (firstNumber - secondNumber)
 } 
 function multiply(a,b){
-    return a*b 
+    return (firstNumber * secondNumber)
 }
 function divide(a,b){
-    return a/b
+    return (firstNumber / secondNumber)
 }
 function operate(operator,a,b){
     if (operator == '+'){
-        return add(a,b)
+        return add(firstNumber,secondNumber)
     } else if (operator == '-'){
-        return subtract(a,b)
+        return subtract(firstNumber,secondNumber)
     } else if (operator == '*'){
-        return multiply(a,b)
+        return multiply(firstNumber,secondNumber)
     } else if (operator == '/'){
-        return divide(a,b)
+        return divide(firstNumber,secondNumber)
     }
 }
 
@@ -34,7 +34,7 @@ const equalsTo  = document.querySelector("#equals-to")
 
 function getNumber(){
     numbres.forEach(number => number.addEventListener("click", ()=>{
-        if()
+        // if()
     }))
 }
 
