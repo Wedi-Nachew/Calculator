@@ -7,30 +7,35 @@
     </head>
     <body>
         <div id="container">
+            <div class="display">
+                <p id="clicked"></p>
+            </div>
+            <div class="sub-container">
                 <div id="first-row">
-                    <button id="num" onclick="number('1')">1</button>
-                    <button id="num" onclick="number('2')">2</button>
-                    <button id="num" onclick="number('3')">3</button>
+                    <button id="num" data-value= "1">1</button>
+                    <button id="num" data-value= "2">2</button>
+                    <button id="num" data-value= "3">3</button>
                     <button id="clear">clear</button>
                 </div>
                 <div id="second-row">
-                    <button id="num" onclick="number('4')">4</button>
-                    <button id="num" onclick="number('5')">5</button>
-                    <button id="num" onclick="number('6')">6</button>
-                    <button id="num" onclick="number('0')">0</button>
+                    <button id="num" data-value= "4">4</button>
+                    <button id="num" data-value= "5">5</button>
+                    <button id="num" data-value= "6">6</button>
+                    <button id="num" data-value= "0">0</button>
                 </div>
                 <div id="third-row">
-                    <button id="num" onclick="number('7')">7</button>
-                    <button id="num" onclick="number('8')">8</button>
-                    <button id="num" onclick="number('9')">9</button>
+                    <button id="num" data-value= "7">7</button>
+                    <button id="num" data-value= "8">8</button>
+                    <button id="num" data-value= "9">9</button>
                     <button id="equals-to">=</button>
                 </div>
                 <div id="fourth-row">
-                    <button id="add" onclick ="operate('+')">+</button>
-                    <button id="subtract" onclick ="operate('-')">-</button>
-                    <button id="multiply" onclick="operate('*')">*</button>
-                    <button id="divid" onclick="operate('/')">/</button>
-                </div>     
+                    <button class="operator" data-value="+">+</button>
+                    <button class="operator" data-value="-">-</button>
+                    <button class="operator" data-value="*">*</button>
+                    <button class="operator" data-value="/">/</button>
+                </div> 
+            </div>    
         </div>
     </body>
 </html>
