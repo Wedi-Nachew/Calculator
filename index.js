@@ -47,13 +47,11 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
     operator = e.target.dataset.value;
     
 }))
+equalsTo.addEventListener("click", ()=> {
+    let result = operate(operator,firstNumber,secondNumber);
+    showNumbers.textContent = result;
+})
 
 
 
 
-
-
-/*
-
-
-const display = renderNumbers()*/
