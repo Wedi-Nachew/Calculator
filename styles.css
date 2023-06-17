@@ -1,9 +1,14 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     border: 2px solid gainsboro;
 }
 #first-row,
@@ -12,6 +17,6 @@
 #fourth-row {
     display: flex;
     flex-direction: column;
-    width: 40px;
-    height: 20px;
+    width: 60px;
+    height: 40px;
 }
