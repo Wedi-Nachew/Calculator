@@ -1,13 +1,26 @@
-const display = document.querySelector(".display")
+let a=0;
+let b=0;
+let operator;
+let count = 0;
+
+const numberClicked = document.querySelector("#clicked")
 const numbres = document.querySelectorAll("#num")
-numbres.forEach(item => item.addEventListener("click", (e)=>{
-    display.textContent = e.target.dataset.value;
+const operators = document.querySelectorAll(".operator")
+
+ numbres.forEach(item => item.addEventListener("click", (e)=> {
+    let number = e.target.dataset.value;
+    numberClicked.textContent = number;
+    a = numberClicked.textContent;
+})) ;
+
+operators.forEach(item => item.addEventListener("click", (e)=> {
+    operator = e.target.dataset.value;
+    console.log(`${operator} got clicked`)
 }))
 
-let a;
-let b;
-let operator;
-/*
+
+
+
 function add(a,b){
     return a+b
 }
@@ -20,10 +33,9 @@ function multiply(a,b){
 function divide(a,b){
     return a/b
 }
-console.log(number())
 function operate(operator,a,b){
     if (operator == '+'){
-        return add(1,2)
+        return add(a,b)
     } else if (operator == '-'){
         return subtract(1,2)
     } else if (operator == '*'){
@@ -32,6 +44,7 @@ function operate(operator,a,b){
         return divide(1,2)
     }
 }
+/*
 function renderNumbers(){
 
 }
