@@ -3,19 +3,19 @@ let secondNumber = null;
 let operator = null;
 let count = 0;
 
-function add(a,b){
-    return (firstNumber + secondNumber)
+function add(firstNumber,secondNumber){
+    return (~~firstNumber + ~~secondNumber)
 }
-function subtract(a,b){
-    return (firstNumber - secondNumber)
+function subtract(firstNumber,secondNumber){
+    return (~~firstNumber - ~~secondNumber)
 } 
-function multiply(a,b){
-    return (firstNumber * secondNumber)
+function multiply(firstNumber,secondNumber){
+    return (~~firstNumber * ~~secondNumber)
 }
-function divide(a,b){
-    return (firstNumber / secondNumber)
+function divide(firstNumber,secondNumber){
+    return (~~firstNumber / ~~secondNumber)
 }
-function operate(operator,a,b){
+function operate(operator,firstNumber,secondNumber){
     if (operator == '+'){
         return add(firstNumber,secondNumber)
     } else if (operator == '-'){
@@ -27,43 +27,26 @@ function operate(operator,a,b){
     }
 }
 
-const numberClicked = document.querySelector("#clicked")
+const showNumbers = document.querySelector("#show-numbers")
 const numbres = document.querySelectorAll("#num")
 const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
 
-function getNumber(){
-    numbres.forEach(number => number.addEventListener("click", ()=>{
-        // if()
-    }))
-}
 
-//  numbres.forEach(item => item.addEventListener("click", (e)=> {
-//     let number = e.target.dataset.value;
-//     numberClicked.textContent = number;
-//     if(operator === null) {
-//         a = number
-//     } else {
-//         b = number
-//     }
-//     console.log(a);
-//     console.log(b);
-//     operators.forEach(item => item.addEventListener("click", (e)=> {
-//         operator = item.textContent;
-//         console.log(operator)
-//         equalsTo.addEventListener("click", ()=> {
-//             if (operator == '+'){
-//                 return a+b
-//             } else if (operator == '-'){
-//                 return subtract(a,b)
-//             } else if (operator == '*'){
-//                 return multiply(a,b)
-//             } else if (operator == '/'){
-//                 return divide(a,b)
-//             }
-//         })
-//     }))
-// })) ;
+ numbres.forEach(item => item.addEventListener("click", (e)=> {
+    let number = e.target.dataset.value;
+    showNumbers.textContent = number;
+    if(!operator) {
+        firstNumber = number
+    } else {
+        secondNumber = number
+    }
+    
+})) ;
+operators.forEach(item => item.addEventListener("click", (e)=> {
+    operator = e.target.dataset.value;
+    
+}))
 
 
 
@@ -71,8 +54,6 @@ function getNumber(){
 
 
 /*
-function renderNumbers(){
 
-}
 
 const display = renderNumbers()*/
