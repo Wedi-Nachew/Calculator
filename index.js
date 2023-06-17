@@ -1,22 +1,30 @@
-let a=0;
-let b=0;
-let operator;
+let a=null;
+let b=null;
+let operator=null;
 let count = 0;
 
 const numberClicked = document.querySelector("#clicked")
 const numbres = document.querySelectorAll("#num")
 const operators = document.querySelectorAll(".operator")
+const equalsTo  = document.querySelector("#equals-to")
 
  numbres.forEach(item => item.addEventListener("click", (e)=> {
     let number = e.target.dataset.value;
     numberClicked.textContent = number;
-    a = numberClicked.textContent;
+    if(operator === null) {
+        a = number
+    } else {
+        b = number
+    }
 })) ;
 
 operators.forEach(item => item.addEventListener("click", (e)=> {
     operator = e.target.dataset.value;
-    console.log(`${operator} got clicked`)
 }))
+
+equalsTo.addEventListener("click", (operator)=> {
+    console.log("eqauls to")
+})
 
 
 
