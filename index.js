@@ -11,7 +11,7 @@ function subtract(a,b){
 function multiply(a,b){
     return a*b 
 }
-function divid(a,b){
+function divide(a,b){
     return a/b
 }
 function number(select){
@@ -19,7 +19,6 @@ function number(select){
     num = 1;
     a = num;
     b = num;
-    console.log( add(a,b))
     }else if(select ==2){
        return num = 2
     }else if(select ==3){
@@ -42,11 +41,16 @@ function number(select){
 
 }
 console.log(number())
-function operate(a,operate,b){
-    add(a,b)
-    subtract(a,b)
-    multiply(a,b)
-    divid(a,b)
+function operate(operator,a,b){
+    if (operator == '+'){
+        console.log("add(a,b)")
+    } else if (operator == '-'){
+        console.log("subtract(a,b)")
+    } else if (operator == '*'){
+        console.log("multiply(a,b)")
+    } else if (operator == '/'){
+        console.log("divide(a,b)")
+    }
 }
 function renderNumbers(){
 
