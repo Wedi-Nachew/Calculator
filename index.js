@@ -1,5 +1,9 @@
-let a = number();
-let b = number();
+const numbres = document.querySelectorAll("#num")
+numbres.forEach(item => item.addEventListener("click", (e)=>{
+    console.log(e.target.dataset.value)
+}))
+let a;
+let b;
 let operator;
 
 function add(a,b){
@@ -14,42 +18,16 @@ function multiply(a,b){
 function divide(a,b){
     return a/b
 }
-function number(select){
-    if(select ==1){
-    num = 1;
-    a = num;
-    b = num;
-    }else if(select ==2){
-       return num = 2
-    }else if(select ==3){
-       return  num = 3
-    }else if(select ==4){
-       return num = 4
-    }else if(select ==5){
-        return num = 5
-    }else if(select ==6){
-       return num = 6
-    }else if(select ==7){
-        return num = 7
-    }else if(select ==8){
-       return num = 8
-    }else if(select ==9){
-        return num = 9
-    }else if(select ===0){
-        r
-    }
-
-}
 console.log(number())
 function operate(operator,a,b){
     if (operator == '+'){
-        console.log("add(a,b)")
+        return add(1,2)
     } else if (operator == '-'){
-        console.log("subtract(a,b)")
+        return subtract(1,2)
     } else if (operator == '*'){
-        console.log("multiply(a,b)")
+        return multiply(1,2)
     } else if (operator == '/'){
-        console.log("divide(a,b)")
+        return divide(1,2)
     }
 }
 function renderNumbers(){
