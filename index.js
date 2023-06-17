@@ -28,12 +28,12 @@ function operate(operator,firstNumber,secondNumber){
 }
 
 const showNumbers = document.querySelector("#show-numbers")
-const numbres = document.querySelectorAll("#num")
+const getNumber = document.querySelectorAll("#num")
 const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
 
 
- numbres.forEach(item => item.addEventListener("click", (e)=> {
+ getNumber.forEach(item => item.addEventListener("click", (e)=> {
     let number = e.target.dataset.value;
     showNumbers.textContent = number;
     if(!operator) {
