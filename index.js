@@ -3,19 +3,28 @@ let secondNumber = 0;
 let operator = null;
 let count = 0;
 let result = 0;
-let clear = document.querySelector("#clear")
+const clear = document.querySelector("#clear")
+const floatPoint = document.querySelector("#point")
 
 function add(firstNumber,secondNumber){
-    return Math.round((~~firstNumber + ~~secondNumber) * 10000)/10000
+    firstNumber = parseFloat(firstNumber)
+    secondNumber = parseFloat(secondNumber)
+    return Math.round((firstNumber + secondNumber) * 10000)/10000
 }
 function subtract(firstNumber,secondNumber){
-    return Math.round((~~firstNumber - ~~secondNumber) *10000)/ 10000
+    firstNumber = parseFloat(firstNumber)
+    secondNumber = parseFloat(secondNumber)
+    return Math.round((firstNumber - secondNumber) *10000)/ 10000
 } 
 function multiply(firstNumber,secondNumber){
-    return Math.round((~~firstNumber * ~~secondNumber) *10000)/10000
+    firstNumber = parseFloat(firstNumber)
+    secondNumber = parseFloat(secondNumber)
+    return Math.round((firstNumber * secondNumber) *10000)/10000
 }
 function divide(firstNumber,secondNumber){
-    return Math.round((~~firstNumber / ~~secondNumber) *10000)/10000
+    firstNumber = parseFloat(firstNumber)
+    secondNumber = parseFloat(secondNumber)
+    return Math.round((firstNumber / secondNumber) *10000)/10000
 }
 function operate(operator,firstNumber,secondNumber){
     if (operator == '+'){
@@ -33,6 +42,7 @@ const showNumbers = document.querySelector("#show-numbers")
 const getNumber = document.querySelectorAll("#num")
 const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
+showNumbers.textContent = 0;
 
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
@@ -73,5 +83,15 @@ equalsTo.addEventListener("click", ()=> {
 clear.addEventListener("click", () =>{
     firstNumber = 0;
     secondNumber = 0;
-    showNumbers.textContent = "";
+    showNumbers.textContent = 0;
+})
+
+floatPoint.addEventListener("click", ()=> {
+    if(!operator) {
+        firstNumber += ".";
+        showNumbers.textContent = firstNumber;
+    }else if(operator) {
+        secondNumber += ".";
+        showNumbers.textContent = secondNumber;
+    }
 })
