@@ -74,5 +74,4 @@ clear.addEventListener("click", () =>{
     firstNumber = 0;
     secondNumber = 0;
     showNumbers.textContent = "";
-
 })
