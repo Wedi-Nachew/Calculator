@@ -3,6 +3,7 @@ let secondNumber = 0;
 let operator = null;
 let count = 0;
 let result = 0;
+let clear = document.querySelector("#clear")
 
 function add(firstNumber,secondNumber){
     return Math.round((~~firstNumber + ~~secondNumber) * 10000)/10000
@@ -67,4 +68,11 @@ equalsTo.addEventListener("click", ()=> {
     } else{
         showNumbers.textContent = "Error";
     }
+})
+
+clear.addEventListener("click", () =>{
+    firstNumber = 0;
+    secondNumber = 0;
+    showNumbers.textContent = "";
+
 })
