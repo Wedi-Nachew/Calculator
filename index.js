@@ -42,6 +42,7 @@ const showNumbers = document.querySelector("#show-numbers")
 const getNumber = document.querySelectorAll("#num")
 const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
+const backspace = document.querySelector("#backspace")
 showNumbers.textContent = 0;
 
 
@@ -94,4 +95,8 @@ floatPoint.addEventListener("click", ()=> {
         secondNumber += ".";
         showNumbers.textContent = secondNumber;
     }
+})
+
+backspace.addEventListener("click", () => {
+    console.log("clicked")
 })
