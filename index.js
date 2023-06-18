@@ -61,6 +61,10 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
     }
 }))
 equalsTo.addEventListener("click", ()=> {
-    result = operate(operator,firstNumber,secondNumber);
-    showNumbers.textContent = result;
+    if(firstNumber && secondNumber && operator) {
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+    } else{
+        showNumbers.textContent = "Error";
+    }
 })
