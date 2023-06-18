@@ -1,6 +1,8 @@
-let firstNumber = null;
-let secondNumber = null;
+let firstNumber = 0;
+let secondNumber = 0;
 let operator = null;
+let count = 0;
+let result = 0;
 
 function add(firstNumber,secondNumber){
     return (~~firstNumber + ~~secondNumber)
@@ -45,14 +47,41 @@ const equalsTo  = document.querySelector("#equals-to")
     } else if (operator && secondNumber) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
+    } else if( count && result && !secondNumber) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = secondNumber;
+    } else if (count && result && secondNumber) {
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = secondNumber;
     }
+
+
 })) ;
 operators.forEach(item => item.addEventListener("click", (e)=> {
-    operator = e.target.dataset.value;
+    if (!count) {
+        operator = e.target.dataset.value;
+        count++
+    }else if(count && !result) {
+        firstNumber = operate(operator,firstNumber,secondNumber);
+        result = firstNumber;
+        secondNumber = 0;
+        showNumbers.textContent = firstNumber;
+        operator= e.target.dataset.value
+    // } else if( count && result && !secondNumber){
+    //     firstNumber = operate(operator,firstNumber,secondNumber);
+    //     showNumbers.textContent = firstNumber;
+    //     operator = e.target.dataset.value;
+    // } else if (count && result && secondNumber) {
+        firstNumber = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = firstNumber;
+        operator= e.target.dataset.value;
+        result = 0;
+        secondNumber = 0;
+    }
     
 }))
 equalsTo.addEventListener("click", ()=> {
-    let result = operate(operator,firstNumber,secondNumber);
+    result = operate(operator,firstNumber,secondNumber);
     showNumbers.textContent = result;
 })
 
