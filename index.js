@@ -99,12 +99,13 @@ floatPoint.addEventListener("click", ()=> {
 
 backspace.addEventListener("click", () => {
     if(!operator){
-        firstNumber = Array.from(firstNumber);
-        firstNumber.pop()
+        firstNumber = firstNumber.slice(0,firstNumber.length -1)
+        // firstNumber = Array.from(firstNumber);
+        // firstNumber.pop()
+        // firstNumber = firstNumber.join("")
         showNumbers.textContent = firstNumber;
     } else if(operator) {
-        secondNumber = Array.from(secondNumber);
-        secondNumber.pop()
+        secondNumber = secondNumber.slice(0,secondNumber.length-1)
         showNumbers.textContent = secondNumber;
     }
 })
