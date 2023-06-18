@@ -1,3 +1,6 @@
+* {
+    border: 2px solid black;
+}
 body {
     display: flex;
     justify-content: center;
@@ -25,4 +28,11 @@ body {
     flex-direction: column;
     width: 60px;
     height: 40px;
+}
+#display {
+    display: flex;
+    height: 20px;
+    width: 60px;
+    flex-grow: 1;
+
 }
