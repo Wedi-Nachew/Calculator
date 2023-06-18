@@ -98,5 +98,13 @@ floatPoint.addEventListener("click", ()=> {
 })
 
 backspace.addEventListener("click", () => {
-    console.log("clicked")
+    if(!operator){
+        firstNumber = Array.from(firstNumber);
+        firstNumber.pop()
+        showNumbers.textContent = firstNumber;
+    } else if(operator) {
+        secondNumber = Array.from(secondNumber);
+        secondNumber.pop()
+        showNumbers.textContent = secondNumber;
+    }
 })
