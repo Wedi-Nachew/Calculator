@@ -131,5 +131,10 @@ document.addEventListener("keydown", (e)=> {
         showNumbers.textContent = firstNumber;
         operator = e.key;
         secondNumber=0;
+    } else if(firstNumber && secondNumber && operator && e.key=="=") {
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+    } else if(e.key=="="){
+        showNumbers.textContent = "Error";
     }
 })
