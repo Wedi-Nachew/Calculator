@@ -78,7 +78,7 @@ equalsTo.addEventListener("click", ()=> {
     if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-    } else{
+    } else if (!operator || !secondNumber){
         showNumbers.textContent = "Error";
         firstNumber = 0;
         secondNumber = 0;
@@ -128,7 +128,15 @@ document.addEventListener("keydown", (e)=> {
         firstNumber=0;
         secondNumber=0;
         showNumbers.textContent = 0;
-    }else if(!operator && firstNumber && Number.isFinite(++e.key)){
+    }else if(firstNumber && secondNumber && operator && e.key == "=") {
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+    } else if(e.key== "=" && (!firstNumber || !secondNumber || !operator)){
+        showNumbers.textContent = "Error";
+        firstNumber = 0;
+        secondNumber = 0;   
+    }
+    else if(!operator && firstNumber && Number.isFinite(++e.key)){
         firstNumber += e.key;
         showNumbers.textContent = firstNumber;
     } else if(!operator && !firstNumber && Number.isFinite(++e.key)){
@@ -140,23 +148,24 @@ document.addEventListener("keydown", (e)=> {
     } else if(operator && secondNumber && Number.isFinite(++e.key)) {
         secondNumber += e.key;
         showNumbers.textContent = secondNumber;
-    } else if (!count) {
+    } else if (!count && e.key == "/") {
+        operator = e.key;
+        e.preventDefault()
+        count++;
+    } else if(count && e.key == "/"){
+        firstNumber = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = firstNumber;
+        operator = e.key;
+        e.preventDefault()
+        secondNumber=0;
+    }else if (!count && e.key != "/" ) {
         operator = e.key;
         count++;
-    } else if(count){
+    } else if(count && e.key != "/"){
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
         operator = e.key;
         secondNumber=0;
-    } else if(firstNumber && secondNumber && operator && e.key == "=") {
-        result = operate(operator,firstNumber,secondNumber);
-        showNumbers.textContent = result;
-    } else if(e.key== "="){
-        showNumbers.textContent = "Error";
-        firstNumber = 0;
-        secondNumber = 0;
-
-        
     }
     
     
