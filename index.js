@@ -110,6 +110,7 @@ backspace.addEventListener("click", () => {
 })
 
 document.addEventListener("keydown", (e)=> {
+
     if(!operator && firstNumber && Number.isFinite(++e.key)){
         firstNumber += e.key;
         showNumbers.textContent = firstNumber;
@@ -122,5 +123,13 @@ document.addEventListener("keydown", (e)=> {
     } else if(operator && secondNumber && Number.isFinite(++e.key)) {
         secondNumber += e.key;
         showNumbers.textContent = secondNumber;
+    } else if (!count) {
+        operator = e.key;
+        count++;
+    } else if(count){
+        firstNumber = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = firstNumber;
+        operator = e.key;
+        secondNumber=0;
     }
 })
