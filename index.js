@@ -100,17 +100,20 @@ floatPoint.addEventListener("click", ()=> {
 })
 
 backspace.addEventListener("click", () => {
-    if(!operator){
+     if(secondNumber.length > 1){
+        showNumbers.textContent = 0;
+        console.log(secondNumber)
+    }else if(firstNumber.length > 1){
         firstNumber = firstNumber.slice(0,firstNumber.length -1)
         showNumbers.textContent = firstNumber;
-    } else if(operator) {
-        secondNumber = secondNumber.slice(0,secondNumber.length-1)
-        showNumbers.textContent = secondNumber;
+        console.log(firstNumber)
+    } else {
+        showNumbers.textContent = 0;
     }
 })
 
 document.addEventListener("keydown", (e)=> {
-
+    showNumbers.textContent = 0;
     if(!operator && firstNumber && Number.isFinite(++e.key)){
         firstNumber += e.key;
         showNumbers.textContent = firstNumber;
@@ -134,7 +137,13 @@ document.addEventListener("keydown", (e)=> {
     } else if(firstNumber && secondNumber && operator && e.key=="=") {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-    } else if(e.key=="="){
+    } else if(e.key== "="){
         showNumbers.textContent = "Error";
+    // } else     if(!operator && e.key=== "Backspace"){
+    //     firstNumber = firstNumber.toString.slice(0,firstNumber.length -1)
+    //     showNumbers.textContent = firstNumber;
+    // } else if(operator && e.key=== "Backspace") {
+    //     secondNumber = secondNumber.toString().slice(0,secondNumber.length-1)
+    //     showNumbers.textContent = secondNumber;
     }
 })
