@@ -80,6 +80,8 @@ equalsTo.addEventListener("click", ()=> {
         showNumbers.textContent = result;
     } else{
         showNumbers.textContent = "Error";
+        firstNumber = 0;
+        secondNumber = 0;
     }
 })
 
@@ -151,6 +153,9 @@ document.addEventListener("keydown", (e)=> {
         showNumbers.textContent = result;
     } else if(e.key== "="){
         showNumbers.textContent = "Error";
+        firstNumber = 0;
+        secondNumber = 0;
+
         
     }
     
