@@ -118,7 +118,11 @@ backspace.addEventListener("click", () => {
 })
 
 document.addEventListener("keydown", (e)=> {
-    if(firstNumber.length > 1  && e.key === "Backspace"){       
+    if  (e.keyCode == 20 || e.keyCode == 16 || e.keyCode == 9 || e.keyCode == 27 || e.keyCode == 17|| e.keyCode == 91 
+        || e.keyCode == 19 || e.keyCode == 18 || e.keyCode == 93 || ( e.keyCode >= 35 && e.keyCode <= 40 ) || e.keyCode == 45  
+        || ( e.keyCode >= 33 && e.keyCode <= 34 ) || (e.keyCode >= 112 && e.keyCode <= 123)  || (e.keyCode >= 144 && e.keyCode <= 145 )) { 
+       return false;
+    } else if(firstNumber.length > 1  && e.key === "Backspace"){       
         firstNumber = firstNumber.slice(0,firstNumber.length -1)
         showNumbers.textContent = firstNumber;
     } else if(secondNumber.length > 1  && e.key === "Backspace"){
@@ -167,13 +171,5 @@ document.addEventListener("keydown", (e)=> {
         operator = e.key;
         secondNumber=0;
     }
-    
-    
-    
-   /* else if  (e.keyCode == 20 || e.keyCode == 16 || e.keyCode == 9 || e.keyCode == 27 || e.keyCode == 17|| e.keyCode == 91 
-//         || e.keyCode == 19 || e.keyCode == 18 || e.keyCode == 93 || ( e.keyCode >= 35 && e.keyCode <= 40 ) || e.keyCode == 45  
-//         || ( e.keyCode >= 33 && e.keyCode <= 34 ) || (e.keyCode >= 112 && e.keyCode <= 123)  || (e.keyCode >= 144 && e.keyCode <= 145 )) { 
-//        return false;
-//    } */
 })
 
