@@ -45,6 +45,25 @@ const equalsTo  = document.querySelector("#equals-to")
 const backspace = document.querySelector("#backspace")
 showNumbers.textContent = 0;
 
+getNumber.forEach(item => item.addEventListener("keydown", (e)=>{
+    if(!operator && firstNumber){
+        firstNumber += e.key;
+        showNumbers.textContent = firstNumber;
+    } else if(!operator && !firstNumber){
+        firstNumber = e.key;
+        showNumbers.textContent = firstNumber;
+    } else if(operator && !secondNumber) {
+        secondNumber = e.key;
+        showNumbers.textContent = secondNumber;
+    } else if(operator && secondNumber) {
+        secondNumber += e.key;
+        showNumbers.textContent = secondNumber;
+    }
+})) ;
+// window.addEventListener("keydown", (e)=>{
+//     console.log(e.code)
+// })
+
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
     if(!operator && firstNumber){
@@ -100,9 +119,6 @@ floatPoint.addEventListener("click", ()=> {
 backspace.addEventListener("click", () => {
     if(!operator){
         firstNumber = firstNumber.slice(0,firstNumber.length -1)
-        // firstNumber = Array.from(firstNumber);
-        // firstNumber.pop()
-        // firstNumber = firstNumber.join("")
         showNumbers.textContent = firstNumber;
     } else if(operator) {
         secondNumber = secondNumber.slice(0,secondNumber.length-1)
