@@ -44,26 +44,9 @@ const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
 const backspace = document.querySelector("#backspace")
 showNumbers.textContent = 0;
-
-getNumber.forEach(item => item.addEventListener("keydown", (e)=>{
-    if(!operator && firstNumber){
-        firstNumber += e.key;
-        showNumbers.textContent = firstNumber;
-    } else if(!operator && !firstNumber){
-        firstNumber = e.key;
-        showNumbers.textContent = firstNumber;
-    } else if(operator && !secondNumber) {
-        secondNumber = e.key;
-        showNumbers.textContent = secondNumber;
-    } else if(operator && secondNumber) {
-        secondNumber += e.key;
-        showNumbers.textContent = secondNumber;
-    }
-})) ;
-// window.addEventListener("keydown", (e)=>{
-//     console.log(e.code)
+// window.addEventListener("keydown", (e)=> {
+//     console.log(e)
 // })
-
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
     if(!operator && firstNumber){
@@ -122,6 +105,22 @@ backspace.addEventListener("click", () => {
         showNumbers.textContent = firstNumber;
     } else if(operator) {
         secondNumber = secondNumber.slice(0,secondNumber.length-1)
+        showNumbers.textContent = secondNumber;
+    }
+})
+
+document.addEventListener("keydown", (e)=> {
+    if(!operator && firstNumber && Number.isFinite(++e.key)){
+        firstNumber += e.key;
+        showNumbers.textContent = firstNumber;
+    } else if(!operator && !firstNumber && Number.isFinite(++e.key)){
+        firstNumber = e.key;
+        showNumbers.textContent = firstNumber;
+    } else if(operator && !secondNumber && Number.isFinite(++e.key)) {
+        secondNumber = e.key;
+        showNumbers.textContent = secondNumber;
+    } else if(operator && secondNumber && Number.isFinite(++e.key)) {
+        secondNumber += e.key;
         showNumbers.textContent = secondNumber;
     }
 })
