@@ -75,7 +75,7 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
     }
 }))
 equalsTo.addEventListener("click", ()=> {
-    if(firstNumber && secondNumber && operator) {
+    if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
     } else{
@@ -100,21 +100,33 @@ floatPoint.addEventListener("click", ()=> {
 })
 
 backspace.addEventListener("click", () => {
-     if(secondNumber.length > 1){
-        showNumbers.textContent = 0;
-        console.log(secondNumber)
-    }else if(firstNumber.length > 1){
+    if(firstNumber.length > 1){
         firstNumber = firstNumber.slice(0,firstNumber.length -1)
         showNumbers.textContent = firstNumber;
         console.log(firstNumber)
-    } else {
+    } else if(secondNumber.length > 1){
+        secondNumber = secondNumber.slice(0,secondNumber.length-1)
+        showNumbers.textContent = 0;
+        console.log(secondNumber)
+    }else {
+        firstNumber=0;
+        secondNumber=0;
         showNumbers.textContent = 0;
     }
 })
 
 document.addEventListener("keydown", (e)=> {
-    showNumbers.textContent = 0;
-    if(!operator && firstNumber && Number.isFinite(++e.key)){
+    if(firstNumber.length > 1  && e.key === "Backspace"){       
+        firstNumber = firstNumber.slice(0,firstNumber.length -1)
+        showNumbers.textContent = firstNumber;
+    } else if(secondNumber.length > 1  && e.key === "Backspace"){
+        secondNumber = secondNumber.slice(0,secondNumber.length-1);
+        showNumbers.textContent = 0;
+    } else if(e.key === "Backspace") {
+        firstNumber=0;
+        secondNumber=0;
+        showNumbers.textContent = 0;
+    }else if(!operator && firstNumber && Number.isFinite(++e.key)){
         firstNumber += e.key;
         showNumbers.textContent = firstNumber;
     } else if(!operator && !firstNumber && Number.isFinite(++e.key)){
@@ -134,16 +146,20 @@ document.addEventListener("keydown", (e)=> {
         showNumbers.textContent = firstNumber;
         operator = e.key;
         secondNumber=0;
-    } else if(firstNumber && secondNumber && operator && e.key=="=") {
+    } else if(firstNumber && secondNumber && operator && e.key == "=") {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
     } else if(e.key== "="){
         showNumbers.textContent = "Error";
-    // } else     if(!operator && e.key=== "Backspace"){
-    //     firstNumber = firstNumber.toString.slice(0,firstNumber.length -1)
-    //     showNumbers.textContent = firstNumber;
-    // } else if(operator && e.key=== "Backspace") {
-    //     secondNumber = secondNumber.toString().slice(0,secondNumber.length-1)
-    //     showNumbers.textContent = secondNumber;
+        
     }
+    
+    
+    
+   /* else if  (e.keyCode == 20 || e.keyCode == 16 || e.keyCode == 9 || e.keyCode == 27 || e.keyCode == 17|| e.keyCode == 91 
+//         || e.keyCode == 19 || e.keyCode == 18 || e.keyCode == 93 || ( e.keyCode >= 35 && e.keyCode <= 40 ) || e.keyCode == 45  
+//         || ( e.keyCode >= 33 && e.keyCode <= 34 ) || (e.keyCode >= 112 && e.keyCode <= 123)  || (e.keyCode >= 144 && e.keyCode <= 145 )) { 
+//        return false;
+//    } */
 })
+
