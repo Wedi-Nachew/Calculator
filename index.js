@@ -3,6 +3,8 @@ let secondNumber = 0;
 let operator = null;
 let count = 0;
 let result = 0;
+let trig = 0;
+let number= 0;
 const clear = document.querySelector("#clear")
 const floatPoint = document.querySelector("#point")
 
@@ -55,7 +57,12 @@ showNumbers.textContent = 0;
 // })
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
-    if(!operator && firstNumber){
+    if(trig  && !number) {
+        number = e.target.dataset.value;
+    }else if(trig  && number) {
+        number += e.target.dataset.value;
+    }
+    else if(!operator && firstNumber){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = firstNumber;
     } else if(!operator && !firstNumber){
@@ -67,7 +74,9 @@ showNumbers.textContent = 0;
     } else if(operator && secondNumber) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    }
+    } 
+
+
 })) ;
 operators.forEach(item => item.addEventListener("click", (e)=> {
     if (!count) {
@@ -182,6 +191,15 @@ const trigonometery = document.querySelectorAll(".trig")
 const squareRoot= document.querySelector(".square-root")
 const power= document.querySelector(".power")
 
-trigonometery.forEach(item => item.addEventListener("click", ()=>{
-    console.log("clicked")
+
+
+trigonometery.forEach(item => item.addEventListener("click", (e)=>{
+    if(e.target.textContent === "sin") {
+        trig++
+    } else if(e.target.textContent === "cos") {
+        trig++
+    } else if(e.target.textContent === "tan") {
+        trig++
+    }
+    console.log(trig)
 }))
