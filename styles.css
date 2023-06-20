@@ -9,25 +9,27 @@
 #container {
     display: flex;
     flex-direction: column; 
-    height: 500px;
-    width: 500px;
+    height: auto;
+    width: 280px;
+    border: 3px solid black;
+    padding: 5px 10px;
 }
 .display {
     display: flex;
-    flex-basis: 50px;
-    width: 270px;
-    border: 5px solid gray;
+    flex-basis: 30px;
+    width: 250px;
+    border: 1px solid gray;
     flex-direction: column;
     align-items: flex-end;
+    padding: 0;
 }
 .sub-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     width: 250px;
-    border: 5px solid gray;
     gap: 10px;
-    padding: 20px 10px;
+    padding: 10px 0px;
 } 
 .row {
     display: flex;
