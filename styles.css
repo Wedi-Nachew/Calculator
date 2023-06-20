@@ -1,41 +1,37 @@
 /* * {
     border: 2px solid black;
 } */
-body {
+ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} 
 #container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    flex-direction: column; 
     height: 300px;
     width: 300px;
-    border: 2px solid gainsboro;
+}
+.display {
+    display: flex;
+    flex-basis: 50px;
+    width: 280px;
+    border: 5px solid gray;
+
 }
 .sub-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#first-row,
-#second-row,
-#third-row,
-#fourth-row {
-    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    /* justify-content: center;
+    align-items: center;*/
+} 
+.row {
+    display: flex;
     width: 60px;
     height: 40px;
-}
-#display {
-    display: flex;
-    height: 20px;
-    width: 60px;
-    flex-grow: 1;
+} 
 
-}
 button {
     width: 80px;
     height: 30px;
