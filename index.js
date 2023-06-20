@@ -106,11 +106,9 @@ backspace.addEventListener("click", () => {
     if(firstNumber.length > 1){
         firstNumber = firstNumber.slice(0,firstNumber.length -1)
         showNumbers.textContent = firstNumber;
-        console.log(firstNumber)
     } else if(secondNumber.length > 1){
         secondNumber = secondNumber.slice(0,secondNumber.length-1)
-        showNumbers.textContent = 0;
-        console.log(secondNumber)
+        showNumbers.textContent = secondNumber;
     }else {
         firstNumber=0;
         secondNumber=0;
@@ -123,12 +121,13 @@ document.addEventListener("keydown", (e)=> {
         || e.keyCode == 19 || e.keyCode == 18 || e.keyCode == 93 || ( e.keyCode >= 35 && e.keyCode <= 40 ) || e.keyCode == 45  
         || ( e.keyCode >= 33 && e.keyCode <= 34 ) || (e.keyCode >= 112 && e.keyCode <= 123)  || (e.keyCode >= 144 && e.keyCode <= 145 )) { 
        return false;
+    }  else if(secondNumber.length > 1  && 
+        e.key === "Backspace" && firstNumber.length > 1){
+        secondNumber = secondNumber.slice(0,secondNumber.length-1)
+        showNumbers.textContent = secondNumber;
     } else if(firstNumber.length > 1  && e.key === "Backspace"){       
         firstNumber = firstNumber.slice(0,firstNumber.length -1)
         showNumbers.textContent = firstNumber;
-    } else if(secondNumber.length > 1  && e.key === "Backspace"){
-        secondNumber = secondNumber.slice(0,secondNumber.length-1);
-        showNumbers.textContent = 0;
     } else if(e.key === "Backspace") {
         firstNumber=0;
         secondNumber=0;
