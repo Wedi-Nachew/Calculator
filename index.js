@@ -5,8 +5,12 @@ let count = 0;
 let result = 0;
 let trig = 0;
 let number= 0;
+let value = 0;
 const clear = document.querySelector("#clear")
 const floatPoint = document.querySelector("#point")
+const power = document.querySelector(".power")
+
+
 
 
 function add(firstNumber,secondNumber){
@@ -29,6 +33,9 @@ function divide(firstNumber,secondNumber){
     secondNumber = parseFloat(secondNumber)
     return Math.round((firstNumber / secondNumber) *10000)/10000
 }
+function exponent(firstNumber, secondNumber) {
+    return firstNumber ** secondNumber
+}
 function operate(operator,firstNumber,secondNumber){
     if (operator == '+'){
         return add(firstNumber,secondNumber)
@@ -38,8 +45,14 @@ function operate(operator,firstNumber,secondNumber){
         return multiply(firstNumber,secondNumber)
     } else if (operator == '/'){
         return divide(firstNumber,secondNumber)
+    } else if (operator == "**") {
+        return exponent(firstNumber, secondNumber)
     }
 }
+
+power.addEventListener("click", (e)=> {
+    operator = "**"
+})
 // function power(firstNumber,secondNumber){
 //     return (firstNumber ** secondNumber);
 // }
@@ -57,25 +70,29 @@ showNumbers.textContent = 0;
 // })
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
+
     if(trig  && !number) {
         number = e.target.dataset.value;
-    }else if(trig  && number) {
+    } else if(trig  && number) {
         number += e.target.dataset.value;
     }
-    else if(!operator && firstNumber){
+    else if(!operator && firstNumber && !trig){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(!operator && !firstNumber){
+    } else if(!operator && !firstNumber && !trig){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(operator && !secondNumber) {
+    } else if(operator && !secondNumber && !trig) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    } else if(operator && secondNumber) {
+    } else if(operator && secondNumber && !trig) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
     } 
-
+    console.log(`number ${number}`)
+    console.log(`firstNumber ${firstNumber}`)
+    console.log(`secondNumber ${secondNumber}`)
+   
 
 })) ;
 operators.forEach(item => item.addEventListener("click", (e)=> {
@@ -90,7 +107,7 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
     }
 }))
 equalsTo.addEventListener("click", ()=> {
-    if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
+     if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
     } else if (!operator || !secondNumber){
@@ -189,17 +206,82 @@ document.addEventListener("keydown", (e)=> {
 
 const trigonometery = document.querySelectorAll(".trig")
 const squareRoot= document.querySelector(".square-root")
-const power= document.querySelector(".power")
-
 
 
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
-    if(e.target.textContent === "sin") {
-        trig++
-    } else if(e.target.textContent === "cos") {
-        trig++
-    } else if(e.target.textContent === "tan") {
-        trig++
+    if(e.target.textContent == "sin"  && firstNumber) {
+        trig++;
+        secondNumber = "fuck"//Math.sin(parseFloat(number));
+    } else if(e.target.textContent === "sin" && !firstNumber) {
+        trig++;
+        firstNumber = Math.sin(parseFloat(number));
     }
-    console.log(trig)
+    else if(e.target.textContent === "cos" && firstNumber) {
+        trig++;
+        secondNumber = Math.cos(parseFloat(number));
+    } else if(e.target.textContent === "cos" && !firstNumber) {
+        trig++;
+        firstNumber = Math.cos(parseFloat(number));
+    } else if(e.target.textContent === "tan" && firstNumber) {
+        trig++;
+        secondNumber = Math.tan(parseFloat(number));
+    } else if(e.target.textContent === "tan" && !firstNumber) {
+        trig++;
+        firstNumber = Math.tan(parseFloat(number));
+
+    }
+    console.log(`number ${number}`)
+    console.log(`firstNumber ${firstNumber}`)
+    console.log(`secondNumber ${secondNumber}`)
+ 
 }))
+
+// trigonometery.forEach(item => item.addEventListener("click", (e)=>{
+//     if(e.target.textContent === "sin" && firstNumber) {
+//         // showNumbers.textContent =  `${firstNumber} * sin(${number})`;
+//         secondNumber = number//Math.sin(parseFloat(number));
+//         // return secondNumber
+//         // firstNumber = parseFloat(firstNumber);
+//         // secondNumber = parseFloat(secondNumber);
+//         // value = firstNumber * secondNumber;
+//         // return value 
+//         trig++;
+
+//     } else if(e.target.textContent === "sin" && !firstNumber) {
+//         trig++;
+//         // showNumbers.textContent =  `sin(${number})`;
+//         firstNumber = Math.sin(parseFloat(number));
+//         // firstNumber = parseFloat(firstNumber);
+//         // secondNumber = parseFloat(secondNumber);
+//         // return firstNumber;
+//     }
+//     else if(e.target.textContent === "cos" && firstNumber) {
+//         trig++;
+//         // showNumbers.textContent =  `${firstNumber} * cos(${number})`;
+//         secondNumber = Math.cos(parseFloat(number));
+//         // firstNumber = parseFloat(firstNumber);
+//         // secondNumber = parseFloat(secondNumber);
+//         // value = firstNumber * secondNumber;
+//         // return value;
+//     } else if(e.target.textContent === "cos" && !firstNumber) {
+//         trig++;
+//         // showNumbers.textContent =  `cos(${number})`;
+//         firstNumber = Math.cos(parseFloat(number));
+//         // return firstNumber;
+//     } else if(e.target.textContent === "tan" && firstNumber) {
+//         trig++;
+//         // showNumbers.textContent =  `${firstNumber} * tan(${number})`;
+//         secondNumber = Math.tan(parseFloat(number));
+//         // firstNumber = parseFloat(firstNumber);
+//         // secondNumber = parseFloat(secondNumber);
+//         // value = firstNumber * secondNumber;
+//         // return value;
+//     } else if(e.target.textContent === "tan" && !firstNumber) {
+//         trig++;
+//         // showNumbers.textContent =  `tan(${number})`;
+//         firstNumber = parseFloat(firstNumber);
+//         // return firstNumber;
+
+//     }
+ 
+// }))
