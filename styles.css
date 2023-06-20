@@ -5,30 +5,32 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: hsl(0, 0%, 96%);
+    background-color: hsl(0, 5%, 90%);
+    height: 100vh;
+    align-items: center;
 } 
 #container {
     display: flex;
     flex-direction: column; 
     height: auto;
     width: auto;
-    border: 3px solid black;
+    border: 3px solid #ffffff;
     padding: 5px 10px;
     align-items: center;
     padding: 20px;
     padding-bottom: 0px;
     background-color: #ffffff;
+    border-radius: 30px;
 }
 .display {
     display: flex;
     flex-basis: 40px;
     width: 230px;
-    border: 1px solid gray;
     flex-direction: column;
     align-items: flex-end;
     margin: 0px 0 20px 0;
-    border-radius: 10px;
-    background-color: hsl(0, 0%, 96%); 
+    border-radius: 15px;
+    background-color: hsl(0, 0%, 95%); 
 }
 .display p {
     margin: 12px 8px;
@@ -60,4 +62,8 @@ button {
     color: #000000;
     font-weight: 600;
     font-size: 14px;   
+}
+#clear,
+#backspace {
+    color: red;
 }
