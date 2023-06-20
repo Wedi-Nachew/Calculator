@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: hsl(0, 0%, 96%);
 } 
 #container {
     display: flex;
@@ -16,6 +17,7 @@
     align-items: center;
     padding: 20px;
     padding-bottom: 0px;
+    background-color: #ffffff;
 }
 .display {
     display: flex;
@@ -26,9 +28,12 @@
     align-items: flex-end;
     margin: 0px 0 20px 0;
     border-radius: 10px;
+    background-color: hsl(0, 0%, 96%); 
 }
 .display p {
     margin: 12px 8px;
+    color: #000000;
+    font-weight: 600;
 }
 .sub-container {
     display: flex;
@@ -52,5 +57,7 @@ button {
     margin: none;
     border: none;
     background-color: hsl(0, 0%, 96%);
-    
+    color: #000000;
+    font-weight: 600;
+    font-size: 14px;   
 }
