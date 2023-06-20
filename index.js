@@ -5,6 +5,9 @@ let count = 0;
 let result = 0;
 const clear = document.querySelector("#clear")
 const floatPoint = document.querySelector("#point")
+const sqr = document.querySelector(".sqr")
+sqr.textContent = "x ** 2"
+
 
 function add(firstNumber,secondNumber){
     firstNumber = parseFloat(firstNumber)
