@@ -67,3 +67,7 @@ button {
 #backspace {
     color: red;
 }
+#equals-to {
+    background-color: green;
+    color: #ffffff;
+}
