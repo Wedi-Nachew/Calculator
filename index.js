@@ -38,23 +38,10 @@ function operate(operator,firstNumber,secondNumber){
         return divide(firstNumber,secondNumber)
     }
 }
-function power(firstNumber,secondNumber){
-    return (firstNumber ** secondNumber);
-}
+// function power(firstNumber,secondNumber){
+//     return (firstNumber ** secondNumber);
+// }
 
-/*function sqaurRoot(number){
-    return (number ** 1/2)
-}
-
-function trignometery(number) {
-    if(sin) {
-        return Math.sin(number)
-    } else if(cos){
-        return Math.cos(number)
-    } else if(tan){
-        return Math.tan(number)
-    }
-}*/
 
 
 const showNumbers = document.querySelector("#show-numbers")
@@ -191,3 +178,10 @@ document.addEventListener("keydown", (e)=> {
     }
 })
 
+const trigonometery = document.querySelectorAll(".trig")
+const squareRoot= document.querySelector(".square-root")
+const power= document.querySelector(".power")
+
+trigonometery.forEach(item => item.addEventListener("click", ()=>{
+    console.log("clicked")
+}))
