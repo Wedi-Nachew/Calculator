@@ -6,6 +6,7 @@ let result = 0;
 let trig = 0;
 let number= 0;
 let value = 0;
+let countPower = 0;
 const clear = document.querySelector("#clear")
 const floatPoint = document.querySelector("#point")
 const power = document.querySelector(".power")
@@ -34,7 +35,7 @@ function divide(firstNumber,secondNumber){
     return Math.round((firstNumber / secondNumber) *10000)/10000
 }
 function exponent(firstNumber, secondNumber) {
-    return firstNumber ** secondNumber
+    return firstNumber ** secondNumber;
 }
 function operate(operator,firstNumber,secondNumber){
     if (operator == '+'){
@@ -51,11 +52,18 @@ function operate(operator,firstNumber,secondNumber){
 }
 
 power.addEventListener("click", (e)=> {
-    operator = "**"
+    if(!countPower){
+        operator = "**";
+        countPower++;
+    } else if(countPower){
+        firstNumber = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = firstNumber;
+        operator = "**";
+        secondNumber=0;
+    } 
+    
 })
-// function power(firstNumber,secondNumber){
-//     return (firstNumber ** secondNumber);
-// }
+
 
 
 
@@ -76,16 +84,16 @@ showNumbers.textContent = 0;
     } else if(trig  && number) {
         number += e.target.dataset.value;
     }
-    else if(!operator && firstNumber && !trig){
+    else if(!operator && firstNumber ){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(!operator && !firstNumber && !trig){
+    } else if(!operator && !firstNumber){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(operator && !secondNumber && !trig) {
+    } else if(operator && !secondNumber) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    } else if(operator && secondNumber && !trig) {
+    } else if(operator && secondNumber) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
     } 
@@ -99,12 +107,12 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
     if (!count) {
         operator = e.target.dataset.value;
         count++;
-    } else if(count){
+    }else if(count){
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
         operator = e.target.dataset.value;
         secondNumber=0;
-    }
+    }  
 }))
 equalsTo.addEventListener("click", ()=> {
      if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
