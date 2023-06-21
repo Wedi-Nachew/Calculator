@@ -7,12 +7,22 @@ let trig = 0;
 let number= 0;
 let value = 0;
 let countPower = 0;
+let sqr = 0;
 const clear = document.querySelector("#clear")
 const floatPoint = document.querySelector("#point")
 const power = document.querySelector(".power")
+const squareRoot= document.querySelector(".square-root")
 
+squareRoot.addEventListener("click",(e)=> {
+    if(e){
+        sqr++
+    }
+    console.log(sqr)
+})
 
-
+function squareRootFunction(number){
+    return (number ** 1/2)
+}
 
 function add(firstNumber,secondNumber){
     firstNumber = parseFloat(firstNumber)
@@ -79,24 +89,40 @@ showNumbers.textContent = 0;
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
 
-    if(trig  && !number) {
-        number = e.target.dataset.value;
-    } else if(trig  && number) {
-        number += e.target.dataset.value;
-    }
-    else if(!operator && firstNumber ){
+     if(!operator && firstNumber && !sqr ){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(!operator && !firstNumber){
+    } else if(!operator && !firstNumber && !sqr){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(operator && !secondNumber) {
+    } else if(operator && !secondNumber && !sqr) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    } else if(operator && secondNumber) {
+    } else if(operator && secondNumber && !sqr) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    } 
+    } else if(sqr & !operator & !firstNumber){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `√${(firstNumber)}`;
+        firstNumber = squareRootFunction(firstNumber);
+        sqr=0;
+    } else if(sqr & !operator & firstNumber){
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `√${(firstNumber)}`
+        firstNumber = squareRootFunction(firstNumber);
+        sqr=0;
+    }else if (sqr && operator && firstNumber) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `√${(secondNumber)}`;
+        secondNumber = squareRootFunction(firstNumber);
+        sqr=0;
+    } else if (sqr && !operator && !secondNumber){
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `√${(secondNumber)}`;
+        secondNumber = squareRootFunction(firstNumber);
+        sqr=0;
+    }
+    
     console.log(`number ${number}`)
     console.log(`firstNumber ${firstNumber}`)
     console.log(`secondNumber ${secondNumber}`)
@@ -115,10 +141,18 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
     }  
 }))
 equalsTo.addEventListener("click", ()=> {
-     if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
+    if(sqr && !operator && !firstNumber){
+        showNumbers.textContent = firstNumber;
+    } else if(sqr && !operator && firstNumber){
+        showNumbers.textContent = firstNumber;
+    }/*else if (sqr && operator && firstNumber) {
+        showNumbers.textContent = `secondNumber)}`;
+    } else if (sqr && !operator && !secondNumber){
+        showNumbers.textContent = `√${(secondNumber)}`;
+    }*/ else if(isFinite(firstNumber) && isFinite(secondNumber) && operator && !sqr) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-    } else if (!operator || !secondNumber){
+    }else  if ((!operator || !secondNumber) && !sqr){
         showNumbers.textContent = "Error";
         firstNumber = 0;
         secondNumber = 0;
@@ -213,7 +247,7 @@ document.addEventListener("keydown", (e)=> {
 })
 
 const trigonometery = document.querySelectorAll(".trig")
-const squareRoot= document.querySelector(".square-root")
+
 
 
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
