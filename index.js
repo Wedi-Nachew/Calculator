@@ -23,13 +23,13 @@ squareRoot.addEventListener("click",(e)=> {
 })
 
 function getSin(number){
-    return Math.sin(number * Math.PI/180)
+    return Math.sin(number * Math.PI/180).toFixed(3)
 }
 function getCos(number){
-    return Math.cos(number * Math.PI/180)
+    return Math.cos(number * Math.PI/180).toFixed(3)
 }
 function getTan(number){
-    return Math.tan(number * Math.PI/180)
+    return Math.tan(number * Math.PI/180).toFixed(3)
 }
 
 function squareRootFunction(number){
