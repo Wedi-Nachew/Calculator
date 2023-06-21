@@ -16,25 +16,39 @@ const power = document.querySelector(".power")
 const squareRoot= document.querySelector(".square-root")
 const trigonometery = document.querySelectorAll(".trig")
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
-    if(e.target.textContent == "sin") {
+    if(e.target.textContent == "sin" && !sqr) {
         sin++;
         showNumbers.textContent = "sin()";
-    } 
-    else if(e.target.textContent === "cos") {
+    } else if(e.target.textContent == "sin" && sqr) {
+        sqr++;
+        sin++;
+        showNumbers.textContent = "√(sin())";
+    } else if(e.target.textContent === "cos" && !sqr) {
         cos++;
         showNumbers.textContent = "cos()";
-    } else if(e.target.textContent === "tan" ) {
+    } else if(e.target.textContent === "cos" && sqr) {
+        cos++;
+        sqr++;
+        showNumbers.textContent = "√(cos())";
+    }
+     else if(e.target.textContent === "tan" && !sqr) {
         tan++;
         showNumbers.textContent = "tan()";
+    } else if(e.target.textContent === "tan" && sqr){
+        tan++;
+        sqr++;
+        showNumbers.textContent = "√(tan())";
     }
 }))
 
 squareRoot.addEventListener("click",(e)=> {
+   
     if(e){
-        sqr++;
+        sqr=1;
         showNumbers.textContent = "√()"
-    }
+    } 
     console.log(sqr)
+    console.log(sin)
 })
 
 function getSin(number){
@@ -128,7 +142,55 @@ showNumbers.textContent = 0;
     } else if(operator && secondNumber && !sqr && (!sin && !cos && !tan)) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    } else if(sqr && !operator && !firstNumber){
+    } else if(sqr>1 && !operator && !firstNumber && sin){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(sin(${(firstNumber)}))`;
+    } else if(sqr>1 & !operator && firstNumber && sin) {
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(sin(${(firstNumber)}))`
+        firstNumber = squareRootFunction(getSin( firstNumber));
+    } else if (sqr>1 && operator && !secondNumber && sin) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(sin(${(secondNumber)}))`;;
+    } else if (sqr>1 && operator && secondNumber && sin){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(sin(${(secondNumber)}))`
+        secondNumber = squareRootFunction(getSin( secondNumber));
+    } else if(sqr>1 && !operator && !firstNumber && cos){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(firstNumber)}))`;
+    } else if(sqr>1 & !operator && firstNumber && cos) {
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(firstNumber)}))`
+        firstNumber = squareRootFunction(getCos( firstNumber));
+    } else if (sqr>1 && operator && !secondNumber && cos) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(secondNumber)}))`;;
+    } else if (sqr>1 && operator && secondNumber && cos){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(secondNumber)}))`
+        secondNumber = squareRootFunction(getCos( secondNumber));
+    }else if(sqr>1 && !operator && !firstNumber && tan){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(firstNumber)}))`;
+    } else if(sqr>1 & !operator && firstNumber && tan) {
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(firstNumber)}))`
+        firstNumber = squareRootFunction(getTan( firstNumber));
+    } else if (sqr>1 && operator && !secondNumber && tan) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(secondNumber)}))`;;
+    } else if (sqr>1 && operator && secondNumber && tan){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(secondNumber)}))`
+        secondNumber = squareRootFunction(getTan( secondNumber));
+    }
+
+
+
+
+
+     else if(sqr && !operator && !firstNumber){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `√(${(firstNumber)})`;
     } else if(sqr & !operator && firstNumber){
@@ -152,11 +214,11 @@ showNumbers.textContent = 0;
         firstNumber = getSin(firstNumber);
     } else if(sin  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
-        showNumbers.textContent = `sin(${firstNumber})`;
-    } else if(sin  && !operator && !firstNumber){
+        showNumbers.textContent = `sin(${secondNumber})`;
+    } else if(sin  && operator && secondNumber){
         secondNumber += e.target.dataset.value;
-        showNumbers.textContent = `sin(${firstNumber})`;
-        secondNumber = getSin(firstNumber);
+        showNumbers.textContent = `sin(${secondNumber})`;
+        secondNumber = getSin(secondNumber);
     } else if(cos  && !operator && !firstNumber ){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `cos(${firstNumber})`;
@@ -166,25 +228,25 @@ showNumbers.textContent = 0;
         firstNumber = getCos(firstNumber);
     } else if(cos  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
-        showNumbers.textContent = `cos(${firstNumber})`;
-    } else if(cos  && !operator && !firstNumber){
+        showNumbers.textContent = `cos(${secondNumber})`;
+    } else if(cos  && !operator && secondNumber){
         secondNumber += e.target.dataset.value;
-        showNumbers.textContent = `cos(${firstNumber})`;
-        secondNumber = getCos(firstNumber);
+        showNumbers.textContent = `cos(${secondNumber})`;
+        secondNumber = getCos(secondNumber);
     } else if(tan  && !operator && !firstNumber ){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `tan(${firstNumber})`;
-    } else if(tan && !operator && firstNumber ){
+    } else if(tan    && !operator && firstNumber ){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `tan(${firstNumber})`;
         firstNumber = getTan(firstNumber);
     } else if(tan  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
-        showNumbers.textContent = `tan(${firstNumber})`;
-    } else if(tan  && !operator && !firstNumber){
+        showNumbers.textContent = `tan(${secondNumber})`;
+    } else if(tan  && !operator && !secondNumber){
         secondNumber += e.target.dataset.value;
-        showNumbers.textContent = `tan(${firstNumber})`;
-        secondNumber = getTan(firstNumber);
+        showNumbers.textContent = `tan(${secondNumber})`;
+        secondNumber = getTan(secondNumber);
     }
     
     console.log(`number ${number}`)
@@ -213,6 +275,8 @@ equalsTo.addEventListener("click", ()=> {
         showNumbers.textContent = firstNumber;
     } else if(!operator && firstNumber){
         showNumbers.textContent = firstNumber;
+        sqr = 0;
+        firstNumber=0;
     } else  if ((operator && !secondNumber && (sqr || (!sin && !cos && !tan)))){
         showNumbers.textContent = "Error";
         firstNumber = 0;
