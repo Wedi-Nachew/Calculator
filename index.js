@@ -146,6 +146,20 @@ showNumbers.textContent = 0;
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `sin(${firstNumber})`;
         secondNumber = getSin(firstNumber);
+    } else if(cos  && !operator && !firstNumber ){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `cos(${firstNumber})`;
+    } else if(cos && !operator && firstNumber ){
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `cos(${firstNumber})`;
+        firstNumber = getCos(firstNumber);
+    } else if(cos  && operator && !secondNumber){
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `cos(${firstNumber})`;
+    } else if(cos  && !operator && !firstNumber){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `cos(${firstNumber})`;
+        secondNumber = getCos(firstNumber);
     }
     
     console.log(`number ${number}`)
