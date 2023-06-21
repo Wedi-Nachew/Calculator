@@ -201,14 +201,14 @@ equalsTo.addEventListener("click", ()=> {
         showNumbers.textContent = firstNumber;
     } else if(!operator && firstNumber){
         showNumbers.textContent = firstNumber;
-    } else if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
-        result = operate(operator,firstNumber,secondNumber);
-        showNumbers.textContent = result;
-    } else  if ((operator && !secondNumber)){
+    } else  if ((operator && !secondNumber && (sqr || (!sin && !cos && !tan)))){
         showNumbers.textContent = "Error";
         firstNumber = 0;
         secondNumber = 0;
-    }
+    } else if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+    } 
 })
 
 clear.addEventListener("click", () =>{
