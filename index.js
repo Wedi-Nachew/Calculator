@@ -160,6 +160,20 @@ showNumbers.textContent = 0;
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `cos(${firstNumber})`;
         secondNumber = getCos(firstNumber);
+    } else if(tan  && !operator && !firstNumber ){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `tan(${firstNumber})`;
+    } else if(tan && !operator && firstNumber ){
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `tan(${firstNumber})`;
+        firstNumber = getTan(firstNumber);
+    } else if(tan  && operator && !secondNumber){
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `tan(${firstNumber})`;
+    } else if(tan  && !operator && !firstNumber){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `tan(${firstNumber})`;
+        secondNumber = getTan(firstNumber);
     }
     
     console.log(`number ${number}`)
