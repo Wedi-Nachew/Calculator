@@ -116,22 +116,18 @@ showNumbers.textContent = 0;
     } else if(sqr && !operator && !firstNumber){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `√${(firstNumber)}`;
-        firstNumber = squareRootFunction(firstNumber);
-        sqr=0;
     } else if(sqr & !operator && firstNumber){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `√${(firstNumber)}`
         firstNumber = squareRootFunction(firstNumber);
-        sqr=0;
-    }else if (sqr && operator && firstNumber) {
+    }else if (sqr && operator && !secondNumber) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `√${(secondNumber)}`;
         secondNumber = squareRootFunction(secondNumber);
-        sqr=0;
-    } else if (sqr && !operator && !secondNumber){
-        secondNumber = e.target.dataset.value;
+    } else if (sqr && operator && secondNumber){
+        secondNumber += e.target.dataset.value;
         showNumbers.textContent = `√${(secondNumber)}`;
-        secondNumber = squareRootFunction(secondNumber);
+        secondNumber= squareRootFunction(secondNumber);
     } else if(sin  && !operator && !firstNumber ){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `sin(${firstNumber})`;
@@ -189,6 +185,7 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         sin=0;
         cos = 0;
         tan= 0;
+        sqr=0;
     }else if(count){
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
@@ -205,7 +202,8 @@ equalsTo.addEventListener("click", ()=> {
         showNumbers.textContent = "Error";
         firstNumber = 0;
         secondNumber = 0;
-    } else if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
+    } 
+else if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
     } 
@@ -297,69 +295,19 @@ document.addEventListener("keydown", (e)=> {
         secondNumber=0;
     }
 })
-
 const trigonometery = document.querySelectorAll(".trig")
-
-
-
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
     if(e.target.textContent == "sin") {
-        sin++
+        sin++;
+        showNumbers.textContent = "sin()";
     } 
     else if(e.target.textContent === "cos") {
-        cos++
+        cos++;
+        showNumbers.textContent = "cos()";
     } else if(e.target.textContent === "tan" ) {
-        tan++
+        tan++;
+        showNumbers.textContent = "tan()";
     }
  
 }))
 
-// trigonometery.forEach(item => item.addEventListener("click", (e)=>{
-//     if(e.target.textContent === "sin" && firstNumber) {
-//         // showNumbers.textContent =  `${firstNumber} * sin(${number})`;
-//         secondNumber = number//Math.sin(parseFloat(number));
-//         // return secondNumber
-//         // firstNumber = parseFloat(firstNumber);
-//         // secondNumber = parseFloat(secondNumber);
-//         // value = firstNumber * secondNumber;
-//         // return value 
-//         trig++;
-
-//     } else if(e.target.textContent === "sin" && !firstNumber) {
-//         trig++;
-//         // showNumbers.textContent =  `sin(${number})`;
-//         firstNumber = Math.sin(parseFloat(number));
-//         // firstNumber = parseFloat(firstNumber);
-//         // secondNumber = parseFloat(secondNumber);
-//         // return firstNumber;
-//     }
-//     else if(e.target.textContent === "cos" && firstNumber) {
-//         trig++;
-//         // showNumbers.textContent =  `${firstNumber} * cos(${number})`;
-//         secondNumber = Math.cos(parseFloat(number));
-//         // firstNumber = parseFloat(firstNumber);
-//         // secondNumber = parseFloat(secondNumber);
-//         // value = firstNumber * secondNumber;
-//         // return value;
-//     } else if(e.target.textContent === "cos" && !firstNumber) {
-//         trig++;
-//         // showNumbers.textContent =  `cos(${number})`;
-//         firstNumber = Math.cos(parseFloat(number));
-//         // return firstNumber;
-//     } else if(e.target.textContent === "tan" && firstNumber) {
-//         trig++;
-//         // showNumbers.textContent =  `${firstNumber} * tan(${number})`;
-//         secondNumber = Math.tan(parseFloat(number));
-//         // firstNumber = parseFloat(firstNumber);
-//         // secondNumber = parseFloat(secondNumber);
-//         // value = firstNumber * secondNumber;
-//         // return value;
-//     } else if(e.target.textContent === "tan" && !firstNumber) {
-//         trig++;
-//         // showNumbers.textContent =  `tan(${number})`;
-//         firstNumber = parseFloat(firstNumber);
-//         // return firstNumber;
-
-//     }
- 
-// }))
