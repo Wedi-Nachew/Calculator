@@ -14,10 +14,25 @@ const clear = document.querySelector("#clear")
 const floatPoint = document.querySelector("#point")
 const power = document.querySelector(".power")
 const squareRoot= document.querySelector(".square-root")
+const trigonometery = document.querySelectorAll(".trig")
+trigonometery.forEach(item => item.addEventListener("click", (e)=>{
+    if(e.target.textContent == "sin") {
+        sin++;
+        showNumbers.textContent = "sin()";
+    } 
+    else if(e.target.textContent === "cos") {
+        cos++;
+        showNumbers.textContent = "cos()";
+    } else if(e.target.textContent === "tan" ) {
+        tan++;
+        showNumbers.textContent = "tan()";
+    }
+}))
 
 squareRoot.addEventListener("click",(e)=> {
     if(e){
-        sqr++
+        sqr++;
+        showNumbers.textContent = "√()"
     }
     console.log(sqr)
 })
@@ -115,18 +130,18 @@ showNumbers.textContent = 0;
         showNumbers.textContent = secondNumber;
     } else if(sqr && !operator && !firstNumber){
         firstNumber = e.target.dataset.value;
-        showNumbers.textContent = `√${(firstNumber)}`;
+        showNumbers.textContent = `√(${(firstNumber)})`;
     } else if(sqr & !operator && firstNumber){
         firstNumber += e.target.dataset.value;
-        showNumbers.textContent = `√${(firstNumber)}`
+        showNumbers.textContent = `√(${(firstNumber)})`
         firstNumber = squareRootFunction(firstNumber);
     }else if (sqr && operator && !secondNumber) {
         secondNumber = e.target.dataset.value;
-        showNumbers.textContent = `√${(secondNumber)}`;
+        showNumbers.textContent = `√(${(secondNumber)})`;
         secondNumber = squareRootFunction(secondNumber);
     } else if (sqr && operator && secondNumber){
         secondNumber += e.target.dataset.value;
-        showNumbers.textContent = `√${(secondNumber)}`;
+        showNumbers.textContent = `√(${(secondNumber)})`;
         secondNumber= squareRootFunction(secondNumber);
     } else if(sin  && !operator && !firstNumber ){
         firstNumber = e.target.dataset.value;
@@ -295,19 +310,5 @@ document.addEventListener("keydown", (e)=> {
         secondNumber=0;
     }
 })
-const trigonometery = document.querySelectorAll(".trig")
-trigonometery.forEach(item => item.addEventListener("click", (e)=>{
-    if(e.target.textContent == "sin") {
-        sin++;
-        showNumbers.textContent = "sin()";
-    } 
-    else if(e.target.textContent === "cos") {
-        cos++;
-        showNumbers.textContent = "cos()";
-    } else if(e.target.textContent === "tan" ) {
-        tan++;
-        showNumbers.textContent = "tan()";
-    }
- 
-}))
+
 
