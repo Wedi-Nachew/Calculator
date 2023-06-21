@@ -8,6 +8,7 @@ let number= 0;
 let value = 0;
 let countPower = 0;
 let sqr = 0;
+let sqrCounter = 0;
 const clear = document.querySelector("#clear")
 const floatPoint = document.querySelector("#point")
 const power = document.querySelector(".power")
@@ -15,9 +16,8 @@ const squareRoot= document.querySelector(".square-root")
 
 squareRoot.addEventListener("click",(e)=> {
     if(e){
-        sqr++
-    }
-    console.log(sqr)
+        sqr++;
+    } 
 })
 
 function squareRootFunction(number){
