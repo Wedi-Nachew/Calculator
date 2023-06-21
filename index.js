@@ -22,13 +22,13 @@ squareRoot.addEventListener("click",(e)=> {
     console.log(sqr)
 })
 
-function sin(number){
+function getSin(number){
     return Math.sin(number)
 }
-function cos(number){
+function getCos(number){
     return Math.cos(number)
 }
-function tan(number){
+function getTan(number){
     return Math.tan(number)
 }
 
@@ -101,16 +101,16 @@ showNumbers.textContent = 0;
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
 
-     if(!operator && firstNumber && !sqr && (!sin || !cos || !tan)){
+     if(!operator && firstNumber && !sqr && (!sin && !cos && !tan)){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(!operator && !firstNumber && !sqr && (!sin || !cos || !tan)){
+    } else if(!operator && !firstNumber && !sqr && (!sin && !cos && !tan)){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = firstNumber;
-    } else if(operator && !secondNumber && !sqr && (!sin || !cos || !tan)) {
+    } else if(operator && !secondNumber && !sqr && (!sin && !cos && !tan)) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    } else if(operator && secondNumber && !sqr && (!sin || !cos || !tan)) {
+    } else if(operator && secondNumber && !sqr && (!sin && !cos && !tan)) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
     } else if(sqr && !operator && !firstNumber){
@@ -133,7 +133,19 @@ showNumbers.textContent = 0;
         showNumbers.textContent = `√${(secondNumber)}`;
         secondNumber = squareRootFunction(secondNumber);
     } else if(sin  && !operator && !firstNumber ){
-
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `sin(${firstNumber})`;
+    } else if(sin  && !operator && firstNumber ){
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `sin(${firstNumber})`;
+        firstNumber = getSin(firstNumber);
+    } else if(sin  && operator && !secondNumber){
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `sin(${firstNumber})`;
+    } else if(sin  && !operator && !firstNumber){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `sin(${firstNumber})`;
+        secondNumber = getSin(firstNumber);
     }
     
     console.log(`number ${number}`)
@@ -146,6 +158,9 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
     if (!count) {
         operator = e.target.dataset.value;
         count++;
+        sin=0;
+        cos = 0;
+        tan= 0;
     }else if(count){
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
