@@ -302,48 +302,53 @@ showNumbers.textContent = 0;
 
 })) ;
 operators.forEach(item => item.addEventListener("click", (e)=> {
-    if(sqr>1 & !operator && firstNumber && (sin=1)) {
+    if(sqr>1 & !operator && firstNumber && (sin=1) && !count) {
         firstNumber = squareRootFunction(getSin( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         operator = e.target.dataset.value;
-    } else if(sqr>1 & !operator && firstNumber && (cos=1)) {
+        count++;
+    } else if(sqr>1 & !operator && firstNumber && (cos=1) && !count) {
         firstNumber = squareRootFunction(getCos( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         operator = e.target.dataset.value;
-    } else if(sqr>1 & !operator && firstNumber && (tan=1)) {
+        count++;
+    } else if(sqr>1 & !operator && firstNumber && (tan=1) && !count) {
         firstNumber = squareRootFunction(getTan( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         operator = e.target.dataset.value;
-    } else if(sqr=1 & !operator && firstNumber && sin>1) {
+        count++;
+    } else if(sqr=1 & !operator && firstNumber && sin>1 && !count) {
         firstNumber = getSin(squareRootFunction( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         operator = e.target.dataset.value;
-    } else if(sqr=1 & !operator && firstNumber && cos>1) {
+        count++;
+    } else if(sqr=1 & !operator && firstNumber && cos>1 && !count) {
         firstNumber = getCos(squareRootFunction( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         operator = e.target.dataset.value;
-    } else if(sqr=1 & !operator && firstNumber && tan>1) {
+    } else if(sqr=1 & !operator && firstNumber && tan>1 && !count) {
         firstNumber = getTan(squareRootFunction( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         operator = e.target.dataset.value;
+        count++;
     } else if (!count) {
         operator = e.target.dataset.value;
         count++;
@@ -351,7 +356,10 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         cos = 0;
         tan= 0;
         sqr=0;
-    } else if(count){
+    } 
+    
+    
+    else if(count){
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
         operator = e.target.dataset.value;
