@@ -76,10 +76,12 @@ button {
     font-weight: 500;
     font-size: 20px;   
     box-shadow: 5px 5px 5px #ccc;
+    cursor: pointer;
 }
 button:hover{
     background-color: #bdbdbd;
     color: #000000;
+    cursor: pointer;
 }
 
 #clear,
