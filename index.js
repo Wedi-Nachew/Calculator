@@ -59,9 +59,10 @@ squareRoot.addEventListener("click",(e)=> {
         showNumbers.textContent = `tan(√())`;
         sqr=1;
         tan++;
-    }  else if (e && !sin && !cos && !tan){
-        sqr=1;
+    }  else if (e){
         showNumbers.textContent = "√()"
+        sqr=1;
+        
     }
     console.log(`sin:" ${sin}`);
     console.log(`cos:" ${cos}`);
