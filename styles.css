@@ -88,14 +88,27 @@ button {
     background-color: red;
 }
 #equals-to {
-    background-color: rgb(70, 154, 70);
-    color: #ffffff;
+    background-color: #8ac926d5 ;
+    color: #000000;
     font-size: 25px;
     box-shadow: 3px 3px 5px rgb(70, 154, 70);
+}
+#equals-to:hover {
+    background-color: #95d52e;
 }
 .operator {
     font-size: 25px;
 }
+
+.operator:hover,
+.trig:hover,
+.power:hover,
+.square-root:hover {
+    background-color: yellow;
+
+}
+
+
 footer p {
     text-align: center;
 }
