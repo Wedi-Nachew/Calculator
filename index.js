@@ -299,6 +299,10 @@ showNumbers.textContent = 0;
     
     console.log(`firstNumber ${firstNumber}`)
     console.log(`secondNumber ${secondNumber}`)
+    console.log(`sin:" ${sin}`);
+    console.log(`cos:" ${cos}`);
+    console.log(`tan:" ${tan}`);
+    console.log(`sqr:" ${sqr}`);
    
 
 })) ;
@@ -723,4 +727,9 @@ document.addEventListener("keydown", (e)=> {
     }
 })
 
+
+const negation = document.querySelector("#negation")
+negation.addEventListener("click", (e)=> {
+    console.log("clicked")
+})
 
