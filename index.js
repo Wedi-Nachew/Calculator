@@ -17,6 +17,12 @@ const squareRoot= document.querySelector(".square-root");
 const trigonometery = document.querySelectorAll(".trig");
 const negation = document.querySelector("#negation");
 const showClac = document.querySelector("#show-calc");
+const showNumbers = document.querySelector("#show-numbers")
+const getNumber = document.querySelectorAll("#num")
+const operators = document.querySelectorAll(".operator")
+const equalsTo  = document.querySelector("#equals-to")
+const backspace = document.querySelector("#backspace")
+showNumbers.textContent = 0;
 
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
     if(e.target.textContent == "sin" && !sqr) {
@@ -132,16 +138,6 @@ power.addEventListener("click", (e)=> {
     } 
     
 })
-
-
-
-
-const showNumbers = document.querySelector("#show-numbers")
-const getNumber = document.querySelectorAll("#num")
-const operators = document.querySelectorAll(".operator")
-const equalsTo  = document.querySelector("#equals-to")
-const backspace = document.querySelector("#backspace")
-showNumbers.textContent = 0;
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
 
@@ -321,95 +317,95 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(sqr>1 & !operator && firstNumber && (sin=1) && !count) {
+        operator = e.target.dataset.value;
+        showClac.textContent = `√(sin(${firstNumber}))   ${operator} `;
         firstNumber = squareRootFunction(getSin( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(sqr>1 & !operator && firstNumber && (cos=1) && !count) {
+        operator = e.target.dataset.value;
+        showClac.textContent = `√(cos(${firstNumber}))   ${operator} `;
         firstNumber = squareRootFunction(getCos( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(sqr>1 & !operator && firstNumber && (tan=1) && !count) {
+        operator = e.target.dataset.value;
+        showClac.textContent = `√(tan(${firstNumber}))    ${operator} `;
         firstNumber = squareRootFunction(getTan( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(sqr=1 & !operator && firstNumber && sin>1 && !count) {
+        operator = e.target.dataset.value;
+        showClac.textContent = `sin(√(${firstNumber}))    ${operator} `;
         firstNumber = getSin(squareRootFunction( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(sqr=1 & !operator && firstNumber && cos>1 && !count) {
+        operator = e.target.dataset.value;
+        showClac.textContent = `cos(√(${firstNumber}))   ${operator} `;
         firstNumber = getCos(squareRootFunction( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++; //added count++
     } else if(sqr=1 & !operator && firstNumber && tan>1 && !count) {
+        operator = e.target.dataset.value;
+        showClac.textContent = `tan(√(${firstNumber}))   ${operator} `;
         firstNumber = getTan(squareRootFunction( firstNumber));
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(sqr=1 && !operator && firstNumber && 
         (!sin && !cos && !tan) &&!count){
+        operator = e.target.dataset.value;
+        showClac.textContent = `√(${firstNumber})   ${operator} `;
         firstNumber = squareRootFunction(firstNumber);
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(sin && !operator && firstNumber && !count){
+        operator = e.target.dataset.value;
+        showClac.textContent = `sin(${firstNumber})   ${operator} `;
         firstNumber = getSin(firstNumber);
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(cos && !operator && firstNumber && !count){
+        operator = e.target.dataset.value;
+        showClac.textContent = `cos(${firstNumber})   ${operator} `;
         firstNumber = getCos(firstNumber);
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if(tan && !operator && firstNumber && !count){
+        operator = e.target.dataset.value;
+        showClac.textContent = `tan(${firstNumber})   ${operator} `;
         firstNumber = getTan(firstNumber);
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
         count++;
     } else if (!count && operator && !sqr) {
         operator = e.target.dataset.value;
@@ -467,10 +463,10 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
 }))
 equalsTo.addEventListener("click", ()=> {
     if(operator && (!secondNumber || secondNumber) && !sqr && (!sin && !cos && !tan)){
+        showClac.textContent += `${secondNumber} =`;
         secondNumber=secondNumber;
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -479,17 +475,16 @@ equalsTo.addEventListener("click", ()=> {
     else if(sqr>1 & !operator && firstNumber && (sin=1)) {
         firstNumber = squareRootFunction(getSin( firstNumber));
         showNumbers.textContent = firstNumber;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         firstNumber=0;
     } else if (sqr>1 && operator && secondNumber && (sin=1)){
+        showClac.textContent += `√(sin(${secondNumber})) =`;
         secondNumber = squareRootFunction(getSin( secondNumber));
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -497,17 +492,16 @@ equalsTo.addEventListener("click", ()=> {
     } else if(sqr>1 & !operator && firstNumber && (cos=1)) {
         firstNumber = squareRootFunction(getCos( firstNumber));
         showNumbers.textContent = firstNumber;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
         tan = 0;
         firstNumber=0;
     } else if (sqr>1 && operator && secondNumber && (cos=1)){
+        showClac.textContent += `√(cos(${secondNumber})) =`; 
         secondNumber = squareRootFunction(getCos( secondNumber));
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -522,10 +516,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber=0;
     }else if (sqr>1 && operator && secondNumber && (tan=1)){
+        showClac.textContent += `√(tan(${secondNumber})) =`;
         secondNumber = squareRootFunction(getTan( secondNumber));
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -540,10 +534,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber=0;
     } else if(sqr=1 & operator && secondNumber && sin>1) {
+        showClac.textContent += `sin(√(${secondNumber})) =`;
         firstNumber = getSin(squareRootFunction( secondNumber));
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -558,10 +552,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber=0;
     } else if(sqr=1 & operator && secondNumber && cos>1) {
-        firstNumber = getCos(squareRootFunction( secondNumber));
+        showClac.textContent += `cos(√(${secondNumber})) =`;
+        secondNumber = getCos(squareRootFunction( secondNumber));
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -576,10 +570,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber=0;
     } else if(sqr=1 & operator && secondNumber && tan>1) {
-        firstNumber = getTan(squareRootFunction( secondNumber));
+        showClac.textContent += `tan(√(${secondNumber})) =`;
+        secondNumber = getTan(squareRootFunction( secondNumber));
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -594,10 +588,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber=0;
     } else if(sqr=1 && operator && secondNumber && (!sin && !cos && !tan)){
+        showClac.textContent += `√(${secondNumber}) =`;
         secondNumber = squareRootFunction(secondNumber);
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -612,10 +606,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber = 0;
     } else if(sin && operator && secondNumber ){
+        showClac.textContent += `sin(${secondNumber}) =`;
         secondNumber = getSin(secondNumber);
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -630,10 +624,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber = 0;
     } else if(cos && operator && secondNumber ){
+        showClac.textContent += `cos(${secondNumber}) =`;
         secondNumber = getCos(secondNumber);
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
@@ -648,10 +642,10 @@ equalsTo.addEventListener("click", ()=> {
         tan = 0;
         firstNumber = 0;
     } else if(tan && operator && secondNumber ){
+        showClac.textContent += `tan(${secondNumber}) =`;
         secondNumber = getTan(secondNumber);
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
-        showClac.textContent += `${secondNumber} =`;
         sqr = 0;
         sin = 0;
         cos = 0;
