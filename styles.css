@@ -28,23 +28,24 @@
 }
 .display {
     display: flex;
-    flex-basis: 40px;
-    width: 230px;
+    flex-basis: 87px;
+    width: 270px;
     flex-direction: column;
+    justify-content: space-around;
     align-items: flex-end;
     margin: 0px 0 20px 0;
     border-radius: 15px;
     background-color: hsl(0, 0%, 95%); 
     box-shadow: 0 0 5px #ccc;
+    box-sizing: border-box;
 }
 #show-calc{
-    margin: 12px 8px;
     color: #000000d3;
     font-weight: 400;
-    font-size: 13px;
+    font-size: 16px;
 }
 #show-numbers{
-    margin: 12px 8px;
+     margin: 0;
     color: #000000;
     font-weight: 600;
     font-size: 18px;;
@@ -65,8 +66,8 @@
 } 
 
 button {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 75%;
     margin: none;
     border: none;
