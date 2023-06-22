@@ -637,11 +637,15 @@ clear.addEventListener("click", () =>{
 })
 
 floatPoint.addEventListener("click", ()=> {
-    if(!operator) {
+    if(!operator && !Boolean(firstNumber.includes("."))) {
         firstNumber += ".";
         showNumbers.textContent = firstNumber;
-    }else if(operator) {
+    } else if(!operator && Boolean(firstNumber.includes("."))){
+        showNumbers.textContent = firstNumber;
+    } else if(operator && !Boolean(secondNumber.includes("."))) {
         secondNumber += ".";
+        showNumbers.textContent = secondNumber;
+    } else if(operator && Boolean(secondNumber.includes("."))){
         showNumbers.textContent = secondNumber;
     }
 })
