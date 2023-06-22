@@ -10,11 +10,14 @@ let sqr = 0;
 let sin = 0;
 let cos = 0;
 let tan = 0;
-const clear = document.querySelector("#clear")
-const floatPoint = document.querySelector("#point")
-const power = document.querySelector(".power")
-const squareRoot= document.querySelector(".square-root")
-const trigonometery = document.querySelectorAll(".trig")
+const clear = document.querySelector("#clear");
+const floatPoint = document.querySelector("#point");
+const power = document.querySelector(".power");
+const squareRoot= document.querySelector(".square-root");
+const trigonometery = document.querySelectorAll(".trig");
+const negation = document.querySelector("#negation");
+const showClac = document.querySelector("#show-calc");
+
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
     if(e.target.textContent == "sin" && !sqr) {
         sin=1;
@@ -39,10 +42,6 @@ trigonometery.forEach(item => item.addEventListener("click", (e)=>{
         sqr++;
         showNumbers.textContent = "√(tan())";
     }
-    console.log(`sin:" ${sin}`);
-    console.log(`cos:" ${cos}`);
-    console.log(`tan:" ${tan}`);
-    console.log(`sqr:" ${sqr}`);
 }))
 
 squareRoot.addEventListener("click",(e)=> {
@@ -64,10 +63,6 @@ squareRoot.addEventListener("click",(e)=> {
         sqr=1;
         
     }
-    console.log(`sin:" ${sin}`);
-    console.log(`cos:" ${cos}`);
-    console.log(`tan:" ${tan}`);
-    console.log(`sqr:" ${sqr}`);
 })
 
 function getSin(number){
@@ -147,9 +142,6 @@ const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
 const backspace = document.querySelector("#backspace")
 showNumbers.textContent = 0;
-// window.addEventListener("keydown", (e)=> {
-//     console.log(e)
-// })
 
  getNumber.forEach(item => item.addEventListener("click", (e)=> { 
 
@@ -295,13 +287,6 @@ showNumbers.textContent = 0;
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `tan(${secondNumber})`;
     }
-    
-    console.log(`firstNumber ${firstNumber}`)
-    console.log(`secondNumber ${secondNumber}`)
-    console.log(`sin:" ${sin}`);
-    console.log(`cos:" ${cos}`);
-    console.log(`tan:" ${tan}`);
-    console.log(`sqr:" ${sqr}`);
    
 
 })) ;
@@ -461,15 +446,6 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         cos = 0;
         tan = 0;
     }
-
-    console.log(`firstNumber ${firstNumber}`);
-    console.log(`secondNumber ${secondNumber}`);
-    console.log(`sin:" ${sin}`);
-    console.log(`cos:" ${cos}`);
-    console.log(`tan:" ${tan}`);
-    console.log(`sqr:" ${sqr}`);
-    console.log(Boolean(operator));
-    console.log(Boolean(count))
 }))
 equalsTo.addEventListener("click", ()=> {
     if(operator && (!secondNumber || secondNumber) && !sqr && (!sin && !cos && !tan)){
@@ -497,7 +473,6 @@ equalsTo.addEventListener("click", ()=> {
         sin = 0;
         cos = 0;
         tan = 0;
-        // firstNumber=0;
     } else if(sqr>1 & !operator && firstNumber && (cos=1)) {
         firstNumber = squareRootFunction(getCos( firstNumber));
         showNumbers.textContent = firstNumber;
@@ -530,7 +505,6 @@ equalsTo.addEventListener("click", ()=> {
         sin = 0;
         cos = 0;
         tan = 0;
-        // firstNumber=0;
     } else if(sqr=1 & !operator && firstNumber && sin>1) {
         firstNumber = getSin(squareRootFunction( firstNumber));
         showNumbers.textContent = firstNumber;
@@ -547,7 +521,6 @@ equalsTo.addEventListener("click", ()=> {
         sin = 0;
         cos = 0;
         tan = 0;
-        // firstNumber=0;
     } else if(sqr=1 & !operator && firstNumber && cos>1) {
         firstNumber = getCos(squareRootFunction( firstNumber));
         showNumbers.textContent = firstNumber;
@@ -564,7 +537,6 @@ equalsTo.addEventListener("click", ()=> {
         sin = 0;
         cos = 0;
         tan = 0;
-        // firstNumber=0;
     } else if(sqr=1 & !operator && firstNumber && tan>1) {
         firstNumber = getTan(squareRootFunction( firstNumber));
         showNumbers.textContent = firstNumber;
@@ -581,7 +553,6 @@ equalsTo.addEventListener("click", ()=> {
         sin = 0;
         cos = 0;
         tan = 0;
-        // firstNumber=0;
     } else if(sqr=1 & !operator && firstNumber && (!sin && !cos && !tan)){
         firstNumber = squareRootFunction(firstNumber);
         showNumbers.textContent = firstNumber;
@@ -614,7 +585,6 @@ equalsTo.addEventListener("click", ()=> {
         sin = 0;
         cos = 0;
         tan = 0;
-        // firstNumber = 0;
     } else if(cos && !operator && firstNumber ){
         firstNumber = getCos(firstNumber);
         showNumbers.textContent = firstNumber;
@@ -631,7 +601,6 @@ equalsTo.addEventListener("click", ()=> {
         sin = 0;
         cos = 0;
         tan = 0;
-        // firstNumber = 0;
     } else if(tan && !operator && firstNumber ){
         firstNumber = getTan(firstNumber);
         showNumbers.textContent = firstNumber;
@@ -649,22 +618,11 @@ equalsTo.addEventListener("click", ()=> {
         cos = 0;
         tan = 0;
         firstNumber = 0;
-    } /*else  if ((operator && !secondNumber && (sqr || (sin && cos && !tan)))){
-        showNumbers.textContent = "Error";
-        firstNumber = 0;
-        secondNumber = 0;
-    } */
-else if(isFinite(firstNumber) && isFinite(secondNumber) && operator ) {
+    }else if(isFinite(firstNumber) && isFinite(secondNumber) && operator ) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
     } 
 
-    console.log(`firstNumber ${firstNumber}`);
-    console.log(`secondNumber ${secondNumber}`);
-    console.log(`sin:" ${sin}`);
-    console.log(`cos:" ${cos}`);
-    console.log(`tan:" ${tan}`);
-    console.log(`sqr:" ${sqr}`);
 })
 
 clear.addEventListener("click", () =>{
@@ -760,7 +718,7 @@ document.addEventListener("keydown", (e)=> {
 })
 
 
-const negation = document.querySelector("#negation")
+
 negation.addEventListener("click", (e)=> {
     if(!operator) {
         firstNumber = -firstNumber;
