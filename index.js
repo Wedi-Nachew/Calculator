@@ -1,15 +1,3 @@
-let firstNumber = 0;
-let secondNumber = 0;
-let operator = null;
-let count = 0;
-let result = 0;
-let number= 0;
-let value = 0;
-let countPower = 0;
-let sqr = 0;
-let sin = 0;
-let cos = 0;
-let tan = 0;
 const clear = document.querySelector("#clear");
 const floatPoint = document.querySelector("#point");
 const power = document.querySelector(".power");
@@ -23,6 +11,20 @@ const operators = document.querySelectorAll(".operator")
 const equalsTo  = document.querySelector("#equals-to")
 const backspace = document.querySelector("#backspace")
 showNumbers.textContent = 0;
+
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = null;
+let count = 0;
+let result = 0;
+let number= 0;
+let value = 0;
+let countPower = 0;
+let sqr = 0;
+let sin = 0;
+let cos = 0;
+let tan = 0;
+
 
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
     if(e.target.textContent == "sin" && !sqr) {
@@ -816,6 +818,7 @@ clear.addEventListener("click", () =>{
     firstNumber = 0;
     secondNumber = 0;
     showNumbers.textContent = 0;
+    showClac.textContent  = "";
     sqr = 0;
     sin = 0;
     cos = 0;
