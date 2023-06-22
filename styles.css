@@ -81,6 +81,12 @@ button {
 #backspace {
     color: red;
 }
+
+#clear:hover,
+#backspace:hover {
+    color: white;
+    background-color: red;
+}
 #equals-to {
     background-color: rgb(70, 154, 70);
     color: #ffffff;
