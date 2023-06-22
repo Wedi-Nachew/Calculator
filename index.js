@@ -279,7 +279,7 @@ showNumbers.textContent = 0;
     } else if(cos  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `cos(${secondNumber})`;
-    } else if(cos  && !operator && secondNumber){
+    } else if(cos  && operator && secondNumber){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `cos(${secondNumber})`;
     } else if(tan  && !operator && !firstNumber ){
@@ -291,7 +291,7 @@ showNumbers.textContent = 0;
     } else if(tan  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `tan(${secondNumber})`;
-    } else if(tan  && !operator && !secondNumber){
+    } else if(tan  && operator && secondNumber){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `tan(${secondNumber})`;
     }
