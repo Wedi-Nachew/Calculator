@@ -47,7 +47,7 @@
 #show-numbers{
      margin: 0;
     color: #000000;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 18px;;
 }
 .sub-container {
@@ -73,7 +73,7 @@ button {
     border: none;
     background-color: hsl(0, 0%, 96%);
     color: #000000;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 20px;   
     box-shadow: 5px 5px 5px #ccc;
 }
