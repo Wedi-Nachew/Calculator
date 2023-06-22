@@ -77,6 +77,11 @@ button {
     font-size: 20px;   
     box-shadow: 5px 5px 5px #ccc;
 }
+button:hover{
+    background-color: #bdbdbd;
+    color: #000000;
+}
+
 #clear,
 #backspace {
     color: red;
@@ -88,10 +93,10 @@ button {
     background-color: red;
 }
 #equals-to {
-    background-color: #8ac926d5 ;
+    background-color: #8ac926c4 ;
     color: #000000;
     font-size: 25px;
-    box-shadow: 3px 3px 5px rgb(70, 154, 70);
+    box-shadow: 3px 3px 5px #8ac926d5;
 }
 #equals-to:hover {
     background-color: #95d52e;
