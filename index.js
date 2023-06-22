@@ -17,51 +17,73 @@ const squareRoot= document.querySelector(".square-root")
 const trigonometery = document.querySelectorAll(".trig")
 trigonometery.forEach(item => item.addEventListener("click", (e)=>{
     if(e.target.textContent == "sin" && !sqr) {
-        sin++;
+        sin=1;
         showNumbers.textContent = "sin()";
     } else if(e.target.textContent == "sin" && sqr) {
         sqr++;
-        sin++;
+        sin=1;
         showNumbers.textContent = "√(sin())";
     } else if(e.target.textContent === "cos" && !sqr) {
-        cos++;
+        cos=1;
         showNumbers.textContent = "cos()";
     } else if(e.target.textContent === "cos" && sqr) {
-        cos++;
+        cos=1;
         sqr++;
         showNumbers.textContent = "√(cos())";
     }
      else if(e.target.textContent === "tan" && !sqr) {
-        tan++;
+        tan=1;
         showNumbers.textContent = "tan()";
     } else if(e.target.textContent === "tan" && sqr){
-        tan++;
+        tan=1;
         sqr++;
         showNumbers.textContent = "√(tan())";
     }
+    console.log(`sin:" ${sin}`);
+    console.log(`cos:" ${cos}`);
+    console.log(`tan:" ${tan}`);
+    console.log(`sqr:" ${sqr}`);
 }))
 
 squareRoot.addEventListener("click",(e)=> {
    
-    if(e){
+    if (e && sin) {
+        showNumbers.textContent = `sin(√())`;
+        sqr=1;
+        sin++;
+    }  else if (e && cos) {
+        showNumbers.textContent = `cos(√())`;
+        sqr=1;
+        cos++;
+    } else if (e && tan) {
+        showNumbers.textContent = `tan(√())`;
+        sqr=1;
+        tan++;
+    }  else if (e && !sin && !cos && !tan){
         sqr=1;
         showNumbers.textContent = "√()"
-    } 
-    console.log(sqr)
-    console.log(sin)
+    }
+    console.log(`sin:" ${sin}`);
+    console.log(`cos:" ${cos}`);
+    console.log(`tan:" ${tan}`);
+    console.log(`sqr:" ${sqr}`);
 })
 
 function getSin(number){
+    number = parseFloat(number);
     return Math.sin(number * Math.PI/180).toFixed(3)
 }
 function getCos(number){
+    number = parseFloat(number);
     return Math.cos(number * Math.PI/180).toFixed(3)
 }
 function getTan(number){
+    number = parseFloat(number);
     return Math.tan(number * Math.PI/180).toFixed(3)
 }
 
 function squareRootFunction(number){
+    number = parseFloat(number);
     return (number ** (1/2))
 }
 
@@ -142,50 +164,83 @@ showNumbers.textContent = 0;
     } else if(operator && secondNumber && !sqr && (!sin && !cos && !tan)) {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = secondNumber;
-    } else if(sqr>1 && !operator && !firstNumber && sin){
+    } else if(sqr>1 && !operator && !firstNumber && (sin=1)){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `√(sin(${(firstNumber)}))`;
-    } else if(sqr>1 & !operator && firstNumber && sin) {
+    } else if(sqr>1 & !operator && firstNumber && (sin=1)) {
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `√(sin(${(firstNumber)}))`
-        firstNumber = squareRootFunction(getSin( firstNumber));
-    } else if (sqr>1 && operator && !secondNumber && sin) {
+    } else if (sqr>1 && operator && !secondNumber && (sin=1)) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `√(sin(${(secondNumber)}))`;;
-    } else if (sqr>1 && operator && secondNumber && sin){
+    } else if (sqr>1 && operator && secondNumber && (sin=1)){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `√(sin(${(secondNumber)}))`
-        secondNumber = squareRootFunction(getSin( secondNumber));
-    } else if(sqr>1 && !operator && !firstNumber && cos){
+    } else if(sqr>1 && !operator && !firstNumber && (cos=1)){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `√(cos(${(firstNumber)}))`;
-    } else if(sqr>1 & !operator && firstNumber && cos) {
+    } else if(sqr>1 & !operator && firstNumber && (cos=1)) {
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `√(cos(${(firstNumber)}))`
-        firstNumber = squareRootFunction(getCos( firstNumber));
-    } else if (sqr>1 && operator && !secondNumber && cos) {
+    } else if (sqr>1 && operator && !secondNumber && (cos=1)) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `√(cos(${(secondNumber)}))`;;
-    } else if (sqr>1 && operator && secondNumber && cos){
+    } else if (sqr>1 && operator && secondNumber && (cos=1)){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `√(cos(${(secondNumber)}))`
-        secondNumber = squareRootFunction(getCos( secondNumber));
-    }else if(sqr>1 && !operator && !firstNumber && tan){
+    }else if(sqr>1 && !operator && !firstNumber && (tan=1)){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `√(tan(${(firstNumber)}))`;
-    } else if(sqr>1 & !operator && firstNumber && tan) {
+    } else if(sqr>1 & !operator && firstNumber && (tan=1)) {
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `√(tan(${(firstNumber)}))`
-        firstNumber = squareRootFunction(getTan( firstNumber));
-    } else if (sqr>1 && operator && !secondNumber && tan) {
+    } else if (sqr>1 && operator && !secondNumber && (tan=1)) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `√(tan(${(secondNumber)}))`;;
-    } else if (sqr>1 && operator && secondNumber && tan){
+    } else if (sqr>1 && operator && secondNumber && (tan=1)){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `√(tan(${(secondNumber)}))`
-        secondNumber = squareRootFunction(getTan( secondNumber));
     }
 
+
+
+    else if(sqr=1 && !operator && !firstNumber && sin>1){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `sin(√(${(firstNumber)}))`;
+    } else if(sqr=1 & !operator && firstNumber && sin>1) {
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `sin(√(${(firstNumber)}))`;
+    } else if (sqr=1 && operator && !secondNumber && sin>1) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `sin(√(${(secondNumber)}))`;
+    } else if (sqr=1 && operator && secondNumber && sin>1){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `sin(√(${(secondNumber)}))`;
+    } else if(sqr=1 && !operator && !firstNumber && cos>1){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(firstNumber)}))`;
+    } else if(sqr=1 & !operator && firstNumber && cos>1) {
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(firstNumber)}))`
+    } else if (sqr=1 && operator && !secondNumber && cos>1) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(secondNumber)}))`;;
+    } else if (sqr=1 && operator && secondNumber && cos>1){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(cos(${(secondNumber)}))`
+    }else if(sqr=1 && !operator && !firstNumber && tan>1){
+        firstNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(firstNumber)}))`;
+    } else if(sqr=1 & !operator && firstNumber && tan>1) {
+        firstNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(firstNumber)}))`
+    } else if (sqr=1 && operator && !secondNumber && tan>1) {
+        secondNumber = e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(secondNumber)}))`;;
+    } else if (sqr=1 && operator && secondNumber && tan>1){
+        secondNumber += e.target.dataset.value;
+        showNumbers.textContent = `√(tan(${(secondNumber)}))`;
+    }
 
 
 
@@ -195,12 +250,10 @@ showNumbers.textContent = 0;
         showNumbers.textContent = `√(${(firstNumber)})`;
     } else if(sqr & !operator && firstNumber){
         firstNumber += e.target.dataset.value;
-        showNumbers.textContent = `√(${(firstNumber)})`
-        firstNumber = squareRootFunction(firstNumber);
+        showNumbers.textContent = `√(${(firstNumber)})`;
     }else if (sqr && operator && !secondNumber) {
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `√(${(secondNumber)})`;
-        secondNumber = squareRootFunction(secondNumber);
     } else if (sqr && operator && secondNumber){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `√(${(secondNumber)})`;
@@ -208,75 +261,281 @@ showNumbers.textContent = 0;
     } else if(sin  && !operator && !firstNumber ){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `sin(${firstNumber})`;
-    } else if(sin  && !operator && firstNumber ){
+    } else if(sin  && !operator && firstNumber){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `sin(${firstNumber})`;
-        firstNumber = getSin(firstNumber);
     } else if(sin  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `sin(${secondNumber})`;
     } else if(sin  && operator && secondNumber){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `sin(${secondNumber})`;
-        secondNumber = getSin(secondNumber);
     } else if(cos  && !operator && !firstNumber ){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `cos(${firstNumber})`;
     } else if(cos && !operator && firstNumber ){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `cos(${firstNumber})`;
-        firstNumber = getCos(firstNumber);
     } else if(cos  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `cos(${secondNumber})`;
     } else if(cos  && !operator && secondNumber){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `cos(${secondNumber})`;
-        secondNumber = getCos(secondNumber);
     } else if(tan  && !operator && !firstNumber ){
         firstNumber = e.target.dataset.value;
         showNumbers.textContent = `tan(${firstNumber})`;
     } else if(tan    && !operator && firstNumber ){
         firstNumber += e.target.dataset.value;
         showNumbers.textContent = `tan(${firstNumber})`;
-        firstNumber = getTan(firstNumber);
     } else if(tan  && operator && !secondNumber){
         secondNumber = e.target.dataset.value;
         showNumbers.textContent = `tan(${secondNumber})`;
     } else if(tan  && !operator && !secondNumber){
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `tan(${secondNumber})`;
-        secondNumber = getTan(secondNumber);
     }
     
-    console.log(`number ${number}`)
     console.log(`firstNumber ${firstNumber}`)
     console.log(`secondNumber ${secondNumber}`)
    
 
 })) ;
 operators.forEach(item => item.addEventListener("click", (e)=> {
-    if (!count) {
+    if(sqr>1 & !operator && firstNumber && (sin=1)) {
+        firstNumber = squareRootFunction(getSin( firstNumber));
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        operator = e.target.dataset.value;
+    } else if(sqr>1 & !operator && firstNumber && (cos=1)) {
+        firstNumber = squareRootFunction(getCos( firstNumber));
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        operator = e.target.dataset.value;
+    } else if(sqr>1 & !operator && firstNumber && (tan=1)) {
+        firstNumber = squareRootFunction(getTan( firstNumber));
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        operator = e.target.dataset.value;
+    } else if(sqr=1 & !operator && firstNumber && sin>1) {
+        firstNumber = getSin(squareRootFunction( firstNumber));
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        operator = e.target.dataset.value;
+    } else if(sqr=1 & !operator && firstNumber && cos>1) {
+        firstNumber = getCos(squareRootFunction( firstNumber));
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        operator = e.target.dataset.value;
+    } else if(sqr=1 & !operator && firstNumber && tan>1) {
+        firstNumber = getTan(squareRootFunction( firstNumber));
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        operator = e.target.dataset.value;
+    } else if (!count) {
         operator = e.target.dataset.value;
         count++;
         sin=0;
         cos = 0;
         tan= 0;
         sqr=0;
-    }else if(count){
+    } else if(count){
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
         operator = e.target.dataset.value;
         secondNumber=0;
-    }  
+    }
+
+    console.log(`firstNumber ${firstNumber}`);
+    console.log(`secondNumber ${secondNumber}`);
+    console.log(`sin:" ${sin}`);
+    console.log(`cos:" ${cos}`);
+    console.log(`tan:" ${tan}`);
+    console.log(`sqr:" ${sqr}`);
+    console.log(Boolean(operator));
 }))
 equalsTo.addEventListener("click", ()=> {
-    if(!operator && !firstNumber){
-        showNumbers.textContent = firstNumber;
-    } else if(!operator && firstNumber){
+    if(sqr>1 & !operator && firstNumber && (sin=1)) {
+        firstNumber = squareRootFunction(getSin( firstNumber));
         showNumbers.textContent = firstNumber;
         sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
         firstNumber=0;
+    } else if (sqr>1 && operator && secondNumber && (sin=1)){
+        secondNumber = squareRootFunction(getSin( secondNumber));
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber=0;
+    } else if(sqr>1 & !operator && firstNumber && (cos=1)) {
+        firstNumber = squareRootFunction(getCos( firstNumber));
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber=0;
+    } else if (sqr>1 && operator && secondNumber && (cos=1)){
+        secondNumber = squareRootFunction(getCos( secondNumber));
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber=0;
+    } else if(sqr>1 & !operator && firstNumber && (tan=1)) {
+        firstNumber = squareRootFunction(getTan( firstNumber));
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber=0;
+    }else if (sqr>1 && operator && secondNumber && (tan=1)){
+        secondNumber = squareRootFunction(getTan( secondNumber));
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber=0;
+    } else if(sqr=1 & !operator && firstNumber && sin>1) {
+        firstNumber = getSin(squareRootFunction( firstNumber));
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber=0;
+    } else if(sqr=1 & operator && secondNumber && sin>1) {
+        firstNumber = getSin(squareRootFunction( secondNumber));
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber=0;
+    } else if(sqr=1 & !operator && firstNumber && cos>1) {
+        firstNumber = getCos(squareRootFunction( firstNumber));
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber=0;
+    } else if(sqr=1 & operator && secondNumber && cos>1) {
+        firstNumber = getCos(squareRootFunction( secondNumber));
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber=0;
+    } else if(sqr=1 & !operator && firstNumber && tan>1) {
+        firstNumber = getTan(squareRootFunction( firstNumber));
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber=0;
+    } else if(sqr=1 & operator && secondNumber && tan>1) {
+        firstNumber = getTan(squareRootFunction( secondNumber));
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber=0;
+    } else if(sqr & !operator && firstNumber){
+        firstNumber = squareRootFunction(firstNumber);
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber=0;
+    } else if(sqr & !operator && secondNumber){
+        firstNumber = squareRootFunction(secondNumber);
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+    } else if(sin && !operator && firstNumber ){
+        firstNumber = getSin(firstNumber);
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber = 0;
+    } else if(sin && operator && secondNumber ){
+        secondNumber = getSin(secondNumber);
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber = 0;
+    } else if(cos && !operator && firstNumber ){
+        firstNumber = getCos(firstNumber);
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber = 0;
+    } else if(cos && operator && secondNumber ){
+        secondNumber = getCos(secondNumber);
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        // firstNumber = 0;
+    } else if(tan && !operator && firstNumber ){
+        firstNumber = getTan(firstNumber);
+        showNumbers.textContent = firstNumber;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber = 0;
+    } else if(tan && operator && secondNumber ){
+        secondNumber = getTan(secondNumber);
+        result = operate(operator,firstNumber,secondNumber);
+        showNumbers.textContent = result;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+        firstNumber = 0;
     } else  if ((operator && !secondNumber && (sqr || (!sin && !cos && !tan)))){
         showNumbers.textContent = "Error";
         firstNumber = 0;
@@ -286,6 +545,13 @@ else if(isFinite(firstNumber) && isFinite(secondNumber) && operator) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
     } 
+
+    console.log(`firstNumber ${firstNumber}`);
+    console.log(`secondNumber ${secondNumber}`);
+    console.log(`sin:" ${sin}`);
+    console.log(`cos:" ${cos}`);
+    console.log(`tan:" ${tan}`);
+    console.log(`sqr:" ${sqr}`);
 })
 
 clear.addEventListener("click", () =>{
