@@ -730,6 +730,12 @@ document.addEventListener("keydown", (e)=> {
 
 const negation = document.querySelector("#negation")
 negation.addEventListener("click", (e)=> {
-    console.log("clicked")
+    if(!operator) {
+        firstNumber = -firstNumber;
+        showNumbers.textContent = firstNumber;
+    }else if(operator) {
+        secondNumber = -secondNumber;
+        showNumbers.textContent = secondNumber;
+    }
 })
 
