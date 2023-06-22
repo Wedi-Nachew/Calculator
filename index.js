@@ -132,11 +132,14 @@ power.addEventListener("click", (e)=> {
     if(!countPower){
         operator = "**";
         countPower++;
+        showClac.textContent = `${firstNumber} ^`
     } else if(countPower){
         firstNumber = operate(operator,firstNumber,secondNumber);
-        showNumbers.textContent = firstNumber;
         operator = "**";
+        showClac.textContent += `${secondNumber} = `
+        showNumbers.textContent = firstNumber;
         secondNumber=0;
+        countPower=0;
     } 
     
 })
