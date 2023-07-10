@@ -279,9 +279,28 @@ power.addEventListener("click", (e)=> {
         secondNumber += e.target.dataset.value;
         showNumbers.textContent = `tan(${secondNumber})`;
     }
+    console.log(`firstNumber: ${firstNumber}`)
+    console.log(`secondNumber: ${secondNumber}`)
+    console.log(`operator: ${operator}`)
+    console.log(`sqr: ${sqr}`)
+    console.log(`sin: ${sin}`)
+    console.log(`cos: ${cos}`)
+    console.log(`tan: ${tan}`)
+    console.log(`count: ${count}`)
 })) ;
 operators.forEach(item => item.addEventListener("click", (e)=> {
-    if(sqr && operator &&  firstNumber  &&  (!sin && !cos && !tan) && count){
+    if(count && !sqr && (!sin && !cos && !tan) ){
+        secondNumber = secondNumber;
+        firstNumber = operate (operator,firstNumber,secondNumber);
+        showNumbers.textContent = firstNumber;
+        operator = e.target.dataset.value;
+        showClac.textContent = `${firstNumber}   ${operator} `;
+        secondNumber=0;
+        sqr = 0;
+        sin = 0;
+        cos = 0;
+        tan = 0;
+    }else if(sqr && operator &&  firstNumber  &&  (!sin && !cos && !tan) && count){
         secondNumber = squareRootFunction(secondNumber);
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
@@ -411,7 +430,7 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         sqr=0;
     } 
 
-    else if(sqr>1 && operator && firstNumber && (sin=1) && count) {
+    else if(sqr>1 && operator && firstNumber && (sin=1) && count && !cos) {
         secondNumber = squareRootFunction(getSin(secondNumber));
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
@@ -423,7 +442,7 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         cos = 0;
         tan = 0;
         count++;
-    } else if(sqr>1 && operator && firstNumber && (cos=1) && count) {
+    } else if(sqr>1 && operator && firstNumber && (cos=1) && count && !sin) {
         secondNumber = squareRootFunction(getCos(secondNumber));
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
@@ -436,7 +455,7 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         tan = 0;
         count++;
         count++;
-    } else if(sqr>1 && operator && firstNumber && (tan=1) && count) {
+    } else if(sqr>1 && operator && firstNumber && (tan=1) && count && !sin) {
         secondNumber = squareRootFunction(getTan(secondNumber));
         firstNumber = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = firstNumber;
@@ -527,18 +546,15 @@ operators.forEach(item => item.addEventListener("click", (e)=> {
         sin = 0;
         cos = 0;
         tan = 0;
-    } else if(count){
-        secondNumber=secondNumber;
-        firstNumber = operate(operator,firstNumber,secondNumber);
-        showNumbers.textContent = firstNumber;
-        operator = e.target.dataset.value;
-        showClac.textContent = `${firstNumber}   ${operator} `;
-        secondNumber=0;
-        sqr = 0;
-        sin = 0;
-        cos = 0;
-        tan = 0;
     }
+    console.log(`firstNumber: ${firstNumber}`)
+    console.log(`secondNumber: ${secondNumber}`)
+    console.log(`operator: ${operator}`)
+    console.log(`sqr: ${sqr}`)
+    console.log(`sin: ${sin}`)
+    console.log(`cos: ${cos}`)
+    console.log(`tan: ${tan}`)
+    console.log(`count: ${count}`)
 }))
 equalsTo.addEventListener("click", ()=> {
     if(operator && (!secondNumber || secondNumber) && !sqr && (!sin && !cos && !tan)){
@@ -808,12 +824,20 @@ equalsTo.addEventListener("click", ()=> {
         count++;
     }*/
     
-    
     else if(isFinite(firstNumber) && isFinite(secondNumber) && operator ) {
         result = operate(operator,firstNumber,secondNumber);
         showNumbers.textContent = result;
         showClac.textContent += `${secondNumber} =`;
     } 
+
+    console.log(`firstNumber: ${firstNumber}`)
+    console.log(`secondNumber: ${secondNumber}`)
+    console.log(`operator: ${operator}`)
+    console.log(`sqr: ${sqr}`)
+    console.log(`sin: ${sin}`)
+    console.log(`cos: ${cos}`)
+    console.log(`tan: ${tan}`)
+    console.log(`count: ${count}`)
 
 })
 
